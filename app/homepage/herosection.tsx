@@ -6,7 +6,8 @@ import Image from 'next/image';
 
 function HeroSection () {
     return (
-        <section className="hero flex md:flex-row flex-col  justify-between w-full px-4 lg:px-16 lg:pt-16 mt-4 lg:gap-16 md:gap-4">
+        <section className="hero flex md:flex-row flex-col  justify-between w-full px-4 lg:px-16 lg:pt-16 mt-4 lg:gap-16 md:gap-4 md:mt-16">
+            
             <div className="flex flex-col lg:max-w-[648px] w-full">
                 <Badge variant="outline" className="flex items-center text-[12px] font-bold md:mb-8 mb-2">
                     <div className="bg-logo w-2 h-2 rounded-md"></div>
@@ -29,6 +30,7 @@ function HeroSection () {
             <div className="relative lg:min-w-[550px] lg:min-h-[400px] w-full min-h-[180px]">
                         <Image src="/images/Hero-Right-Media.png" alt="Hero Image" fill className="object-cover rounded-2xl" />
             </div>
+        
         </section>
 
     )

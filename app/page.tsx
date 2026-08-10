@@ -4,6 +4,7 @@ import CategoryNavigation from "./homepage/categorynavigation";
 import ProductSection from "./homepage/productsection";
 import BannerSection from "./homepage/bannersection";
 import Testimonial from "./homepage/testimonial"
+import FooterSection from "./homepage/footersection";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
   <ProductSection />
   <BannerSection />
   <Testimonial />
+  <FooterSection />
  </div>
   );
 }

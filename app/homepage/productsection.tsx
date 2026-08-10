@@ -21,7 +21,7 @@ function ProductSection() {
                 <Button className="text-[12px] font-semibold text-logo" variant="link">View All Product</Button>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 w-full gap-3 mt-4 md:mt-10">
+            <div className="grid grid-cols-2 md:grid-cols-3 w-full gap-3 mt-4 md:mt-10 md:mb-12">
                 <figure className="w-full">
                     <Card className="relative bg-surface mx-auto pt-0 max-h-[195px] md:min-h-[347px] w-full">
                         

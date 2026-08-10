@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 
 export default function Header() {
     return (
-        <header className="pt-5 lg:px-16 h-14 px-4 w-full">
+        <header className="sticky top-0 z-50 py-5 lg:px-16 px-4 w-full border-b bg-[#0A0A0F]">
             <nav className="flex justify-between items-center gap-4">
                 <div className="flex items-center gap-1">
                     <div className="w-3 h-3 bg-logo rounded-xs"></div>
