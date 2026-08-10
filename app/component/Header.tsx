@@ -17,7 +17,7 @@ export default function Header() {
                 <div className="flex items-center md:gap-5 gap-2">
                   <div className="md:flex items-center gap-5 hidden">
                     <Link className="text-[14px] font-semibold" href="/homepage">Home</Link>
-                    <Link className="text-[14px] font-semibold" href="/Shop">Shop</Link>
+                    <Link className="text-[14px] font-semibold" href="/shop">Shop</Link>
                     <Link className="text-[14px] font-semibold" href="/about">About</Link>
                   </div>
                     <Link className="flex items-center text-[0.8rem] font-semibold" href="/bag">
