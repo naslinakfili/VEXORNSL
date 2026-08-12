@@ -2,6 +2,8 @@ import { ArrowRight, PlayCircle} from "lucide-react";
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import Image from 'next/image';
+import LinkShopinHeroBanner from "./linkshop"
+import Link from "next/link";
 
 
 function HeroSection () {
@@ -17,14 +19,7 @@ function HeroSection () {
                 <h1 className="lg:text-[64px] text-[32px] text-4xl font-extrabold mb-2">Engineered for Tomorrow</h1>
                 <p className="lg:text-[18px] text-[14px] lg:font-semibold text-white/30">Step into the future of sound and performance. Expirience ultra-premium hardware designed specifically for modern  digital creators.</p>
 
-                <div className="flex gap-4 md:mt-8 mt-4 mb-4 md:mb-0 w-full">
-                    <Button className="flex-1 md:flex-none text-[1rem] text-white rounded-sm  bg-logo hover:bg-logo/85 px-5 md:py-0 py-5">Shop Collection
-                        <ArrowRight />
-                    </Button>
-                    <Button variant="outline" className="md:flex hidden text-[1rem] rounded-sm px-5 ">Watch Film
-                        <PlayCircle />
-                    </Button>
-                </div>
+               <LinkShopinHeroBanner />
             </div>
 
             <div className="relative lg:min-w-[550px] lg:min-h-[400px] w-full min-h-[180px]">

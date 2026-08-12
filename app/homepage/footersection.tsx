@@ -64,7 +64,7 @@ function FooterSection() {
             <div className='md:mt-16 mt-11 border-t '>
                 <div className='flex justify-between pt-6 pb-4 mb-10 md:mb-12 text-[12px] text-[#8F8FA4]'>
                     <small>&copy; 2026 VEXOR Technologies. All rights reserved.</small>
-                    <div className='flex md:gap-6'>
+                    <div className='flex md:gap-6 gap-4'>
                         <a href="">Privacy Policy</a>
                         <a href="">Terms of Service</a>
                     </div>
