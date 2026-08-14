@@ -114,7 +114,7 @@ function SelectProdunctHandphone() {
         variant="outline"
         className="text-[11px] font-semibold px-3 py-1.5"
       >
-        Rating: $<Star /> & up{" "}
+        Rating: 4<Star /> & up{" "}
       </Button>
       <Button
         variant="outline"
@@ -140,11 +140,13 @@ function CardPriceRange() {
           step={5}
           className="mx-auto w-full max-w-xs "
         />
+        <div className="flex justify-between text-[12px] text-[#8F8FA4]">
+          <p>$0</p>
+          <p>$500</p>
+        </div>
       </div>
 
-        <Separator />
-
-      <div className="flex flex-col gap-3 py-8">
+      <div className="flex flex-col gap-3 mb-8">
         <h3 className="text-[14px] font-bold">CATEGORY</h3>
         <div className="flex flex-col gap-3 text-[13px] text-[#8F8FA4]">
           <Field orientation="horizontal">
@@ -171,7 +173,7 @@ function CardPriceRange() {
 
         <Separator />
 
-      <div className="flex flex-col gap-3 py-8">
+      <div className="flex flex-col gap-3 my-8">
         <h3 className="text-[14px] font-bold">MIN RATING</h3>
         <RadioGroup className="flex flex-col gap-3 text-white">
           <Field orientation="horizontal">
@@ -208,7 +210,7 @@ function CardPriceRange() {
 
         <Separator />
 
-      <div>
+      <div className="mt-8">
         <Field orientation="horizontal" className="flex items-center h-[20px]">
           <FieldLabel htmlFor="stock" className="text-[14px] font-bold">IN STOKY ONLY</FieldLabel>
           <Switch id="stock" className="!w-[36px] !h-[20px] focus:bg-logo" />
