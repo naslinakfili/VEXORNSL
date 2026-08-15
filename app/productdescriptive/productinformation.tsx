@@ -3,12 +3,13 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import ProductStatistic from "./productstatistic";
 
 function ProductInformation() {
   return (
     <div>
       <h1 className="md:text-[32px] text-[22px] font-extrabold">VEXOR AirPonds Pro Max</h1>
-        <div className="flex flex-col md:gap-8 gap-5">
+        <div className="flex flex-col md:gap-8 gap-5 md:mb-20 mb-4">
             <div className="flex gap-3 items-center mt-4">
             <span className="flex gap-1">
                 <Star className="w-2.5 h-2.5 text-logo" />
@@ -103,17 +104,22 @@ function ProductInformation() {
                 </p>
             </div>
 
-            <div className="flex items-center justify-center gap-4 py-3 md:flex-wrap">
-                <Button className="flex gap-2 py-4 md:px-12 px-10 bg-logo">
+            <div className="flex items-center md:justify-normal justify-center gap-4 py-3 md:flex-wrap">
+                <Button className="flex gap-2 py-4 md:px-12 px-10 bg-logo hover:bg-logo/90">
                     <ShoppingBag />
                     <p>Add o cart</p>
                 </Button>
                 <Button className="md:px-12 px-10 py-4">Buy Now</Button>
-                <Button variant="outline">
+                <Button variant="outline" className="md:flex hidden">
                     <Heart />
                 </Button>
             </div>
         </div>
+
+        <div className="md:block hidden">
+            <ProductStatistic />
+        </div>
+        
     </div>
   );
 }

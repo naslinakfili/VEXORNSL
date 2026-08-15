@@ -1,13 +1,14 @@
 import Image from "next/image";
+import ProductAcordion from "./productacordion";
 
 function ProductGallery() {
   return (
-    <main>
-      <figure className="flex flex-col gap-6 lg:min-w-[600px] md:min-w-[450px]">
+    <main className="">
+      <figure className="flex flex-col gap-6 lg:min-w-[600px] md:min-w-[480px] lg:mb-20">
         <Image
           src="/images/airphonds-white-01.png"
           alt="Product Image"
-          width={640}
+          width={680}
           height={480}
         />
 
@@ -42,6 +43,9 @@ function ProductGallery() {
           />
         </div>
       </figure>
+      <div className="lg:flex hidden">
+        <ProductAcordion />
+      </div>
     </main>
   );
 }
