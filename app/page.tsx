@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
@@ -6,7 +5,8 @@ export default function Home() {
  <div>
   <Link href="./homepage">HOMEPAGE</Link><br />
   <Link href="./shop">SHOP</Link><br />
-  <Link href="./productdescriptive">PRODUCT</Link>
+  <Link href="./productdescriptive">PRODUCT</Link><br />
+  <Link href="./cartdrawer">CARTDRAWER</Link>
  </div>
   );
 }
