@@ -15,7 +15,7 @@ function ProductSection() {
 
 
     return(
-        <section className="flex flex-col mt-6 md:mt-10 px-4 lg:px-16">
+        <section className="flex flex-col mt-6 md:mt-10">
             <div className="flex items-center justify-between w-full">
                 <h2 className="text-[20px] font-bold">Treding Now</h2>
                 <Button className="text-[12px] font-semibold text-logo" variant="link">View All Product</Button>

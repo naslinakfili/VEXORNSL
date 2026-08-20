@@ -1,7 +1,7 @@
 import ProductGallery from "./productgallery";
 import ProductInformation from "./productinformation";
 import ProductRelate from "./productrelate";
-import FooterSection from "../homepage/footersection"
+import FooterSection from "../component/footersection";
 function ProductDescriptive() {
   return (
     <div className="flex flex-col md:px-16 px-4 pt-6">

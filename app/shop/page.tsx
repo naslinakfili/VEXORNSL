@@ -1,12 +1,12 @@
-import ProductCollection from "./productcollectio"
-import FooterSection from "../homepage/footersection"
+import ProductCollection from "./productcollectio";
+import FooterSection from "../component/footersection";
 function Shop() {
-    return(
-        <div>
-            <ProductCollection />
-            <FooterSection />
-        </div>
-    )
+  return (
+    <div className="md:px-16" >
+      <ProductCollection />
+      <FooterSection />
+    </div>
+  );
 }
 
-export default Shop
+export default Shop;

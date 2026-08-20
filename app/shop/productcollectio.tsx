@@ -51,7 +51,7 @@ import {
 function ProductCollection() {
   return (
     <main>
-      <nav className="md:flex hidden text-[13px] gap-2 pt-6 px-4 lg:px-21">
+      <nav className="md:flex hidden text-[13px] gap-2 pt-6">
             <p className="flex gap-2 items-baseline text-surface">
             Home <ChevronRight size="10px" />
             </p>
@@ -61,7 +61,7 @@ function ProductCollection() {
             <p className="flex items-baseline">Audio Collection</p>
       </nav>
 
-      <header className="md:flex hidden justify-between px-4 lg:px-21">
+      <header className="md:flex hidden justify-between">
             <div className="flex items-baseline md:gap-4">
             <h1 className="md:text-[36px] md:font-extrabold">Audio Collection</h1>
             <span className="md:text-[14px] text-surface font-semibold">
@@ -86,7 +86,7 @@ function ProductCollection() {
         </div>
       </div>
 
-      <div className="md:flex hidden flex-1 lg:gap-10 gap-4 mt-6 lg:px-21 px-4">
+      <div className="md:flex hidden flex-1 lg:gap-10 gap-4 mt-6">
         <CardPriceRange />
         <div className="flex-1">
           <ProductSection />

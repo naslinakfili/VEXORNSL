@@ -8,7 +8,7 @@ import Link from "next/link";
 
 function HeroSection () {
     return (
-        <section className="hero flex md:flex-row flex-col  justify-between w-full px-4 lg:px-16 lg:pt-16 mt-4 lg:gap-16 md:gap-4 md:mt-16">
+        <section className="hero flex md:flex-row flex-col  justify-between w-full mt-4 lg:gap-16 md:gap-4 md:mt-16">
             
             <div className="flex flex-col lg:max-w-[648px] w-full">
                 <Badge variant="outline" className="flex items-center text-[12px] font-bold md:mb-8 mb-2">

@@ -18,7 +18,7 @@ function CategoryNavigation() {
     ]
 
     return(
-        <nav className="mt-6 md:mt-16 px-4 lg:px-16">
+        <nav className="mt-6 md:mt-16">
             <ul className="flex gap-2 text-white/40">
                 {buttons.map((btn) => (
                     <li key={btn.id}>

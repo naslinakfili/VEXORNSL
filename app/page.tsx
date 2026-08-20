@@ -6,7 +6,8 @@ export default function Home() {
   <Link href="./homepage">HOMEPAGE</Link><br />
   <Link href="./shop">SHOP</Link><br />
   <Link href="./productdescriptive">PRODUCT</Link><br />
-  <Link href="./cartdrawer">CARTDRAWER</Link>
+  <Link href="./cartdrawer">CARTDRAWER</Link><br />
+  <Link href="./checkoutshipping">CHECKOUTSHIPPING</Link>
  </div>
   );
 }
