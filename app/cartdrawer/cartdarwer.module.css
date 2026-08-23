@@ -1,0 +1,29 @@
+/* Di dalam file globals.css */
+.autohide-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.3s ease;
+}
+
+.autohide-scrollbar:hover {
+  scrollbar-color: rgba(150, 150, 150, 0.4) transparent;
+}
+
+/* Untuk Webkit (Chrome, Safari, Edge) */
+.autohide-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.autohide-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.autohide-scrollbar::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 9999px;
+  transition: background 0.3s ease;
+}
+
+.autohide-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: rgba(150, 150, 150, 0.4);
+}

@@ -47,6 +47,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import CategoryNavigationPhone from "./navproductphone"
 
 function ProductCollection() {
   return (
@@ -75,8 +76,8 @@ function ProductCollection() {
       </header>
 
       {/* select product handphone */}
-      <div className="block md:hidden px-4">
-        <SelectProdunctHandphone />
+      <div className="flex flex-col gap-4 md:hidden px-4 ">
+        <CategoryNavigationPhone />
         <ProductSection />
         <div className="flex justify-center w-full py-4 px-6">
           <Button className="bg-logo text-white px-6 py-3 gap-2 rounded-3xl">
@@ -101,30 +102,6 @@ function ProductCollection() {
 
 export default ProductCollection;
 
-function SelectProdunctHandphone() {
-  return (
-    <nav className="flex gap-2 my-3 mx-4">
-      <Button
-        variant="outline"
-        className="text-[11px] font-semibold px-3 py-1.5 !bg-logo/20 text-logo !border-logo"
-      >
-        Price: $0-$500{" "}
-      </Button>
-      <Button
-        variant="outline"
-        className="text-[11px] font-semibold px-3 py-1.5"
-      >
-        Rating: 4<Star /> & up{" "}
-      </Button>
-      <Button
-        variant="outline"
-        className="text-[11px] font-semibold px-3 py-1.5"
-      >
-        In Stick Only{" "}
-      </Button>
-    </nav>
-  );
-}
 
 // =================================
 // FILTER CARD

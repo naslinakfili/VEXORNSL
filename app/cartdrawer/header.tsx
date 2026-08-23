@@ -4,6 +4,7 @@ import { Progress } from "@/components/ui/progress";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
+import styles from "./cartdarwer.module.css"
 
 export default function Header() {
   return (
@@ -28,7 +29,7 @@ export default function Header() {
         <Progress value={33} className="h-1.5"></Progress>
       </section>
 
-      <div className="h-[325px] mb-6 overflow-y-auto overscroll-auto touch-pan-y">
+      <div className={`h-[325px] mb-6 overflow-y-auto overscroll-auto touch-pan-y ${styles["autohide-scrollbar"]}`}>
         <ul className="flex  flex-col">
           <li className="flex flex-col bg-surface border rounded-lg mb-4">
             <div className="flex gap-4 p-2.5">

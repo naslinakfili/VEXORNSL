@@ -23,7 +23,7 @@ function ProductInformation() {
 
             <div className="flex flex-wrap items-center gap-4">
             <p className="md:text-[28px] text-[24px] font-extrabold">$349.99</p>
-            <del className="text-[16px] text-surface">$399.99</del>
+            <del className="text-[16px] text-gray">$399.99</del>
             <span className="bg-orange md:px-2.5 px-2 py-1 rounded-md md:text-[12px] text-[10px] font-bold">
                 Save $50
             </span>
@@ -76,7 +76,7 @@ function ProductInformation() {
                 </Button>
                 <Input
                 type="number"
-                className="max-w-10 pl-4 rounded-none border-x-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none !ring-0 !ring-offset-0 !outline-none !shadow-none focus-visible:!ring-0 focus-visible:!ring-offset-0 focus-visible:!border-input"
+                className="w-14 text-center rounded-none border-x-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none !ring-0 !ring-offset-0 !outline-none !shadow-none focus-visible:!ring-0 focus-visible:!ring-offset-0 focus-visible:!border-input"
                 ></Input>
                 <Button
                 className="rounded-l-none border-l-0"
