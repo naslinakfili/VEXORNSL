@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 function FooterSection() {
     return(
-        <footer className='md:pt-20 md:mt-12 mx-4 border-t'>
+        <footer className='md:pt-20 md:mt-12 mx-4 md:border-t'>
             <div className='md:flex md:gap-4 hidden justify-between'>
                 <div className='max-w-[320px]'>
                     <div className="flex items-center gap-1">

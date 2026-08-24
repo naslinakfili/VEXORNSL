@@ -29,7 +29,7 @@ function Testimonial() {
             </Avatar>
               <figcaption className="flex flex-col">
                 <h1 className="text-[11px] font-semibold">Naslin Akfili</h1>
-                <p className="text-[9px] text-[#8F8FA4]">Developer, Frondent</p>
+                <p className="text-[9px] text-gray">Developer, Frondent</p>
               </figcaption>
             
           </figure>
