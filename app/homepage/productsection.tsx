@@ -12,9 +12,14 @@ interface ProductItems {
   url: string;
 }
 
+// Revalidate setiap 60 detik (ISR - Incremental Static Regeneration)
+export const revalidate = 60;
+
 async function ProductSection() {
-  const data = await fetch('http://localhost:3000/api/products')
-  const products: ProductItems[] = await data.json()
+  const data = await fetch('/api/products', {
+    next: { revalidate: 60 }
+  });
+  const products: ProductItems[] = await data.json();
   console.log(products);
 
 

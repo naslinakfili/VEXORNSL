@@ -18,14 +18,17 @@ interface ProductDescriptiveProps {
   params: Promise<{ id?: string }>; // Parameter pencarian yang berisi ID produk (opsional)
 }
 
+// Revalidate setiap 60 detik (ISR)
+export const revalidate = 60;
+
 // Komponen async untuk menampilkan detail produk
 async function ProductDescriptive({ params }: ProductDescriptiveProps) {
   // Menunggu hasil dari searchParams dan mengambil nilai id
   const { id } = await params;
 
   // Fetch data produk dari API
-  const response = await fetch("http://localhost:3000/api/products", {
-    cache: "no-store", // Tidak menggunakan cache agar data selalu fresh
+  const response = await fetch("/api/products", {
+    next: { revalidate: 60 }
   });
 
   // Convert response ke array produk
