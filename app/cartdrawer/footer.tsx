@@ -15,7 +15,7 @@ function Footer() {
       <div className="md:flex hidden gap-3 mb-6 w-full">
         <figure className="">
           <Card className="relative bg-surface pt-0 min-w-[160px] max-w-[160px] h-[162px] w-full">
-            <div className="relative w-full h-[90px]">
+            <div className="relative w-full h-22.5">
               <Image
                 src="/images/img-azer.png"
                 alt="Event cover"

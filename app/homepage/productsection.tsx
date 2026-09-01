@@ -1,10 +1,9 @@
-"use client";
+import Link from "next/link";
 import { Star, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardAction } from "@/components/ui/card";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 interface ProductItems {
   id: number;
@@ -13,19 +12,11 @@ interface ProductItems {
   url: string;
 }
 
-function ProductSection() {
-  const [products, setProducts] = useState<ProductItems[]>([]);
+async function ProductSection() {
+  const data = await fetch('http://localhost:3000/api/products')
+  const products: ProductItems[] = await data.json()
+  console.log(products);
 
-  useEffect(() => {
-    fetch("/api/products")
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
-      })
-      .catch((err) => {
-        console.error("error:", err);
-      });
-  }, []);
 
   return (
     <section className="flex flex-col mt-6 md:mt-10">
@@ -35,18 +26,20 @@ function ProductSection() {
           View All Product
         </Button>
       </div>
-
       <div className="grid grid-cols-2 md:grid-cols-3 w-full gap-3 mt-4 md:mt-10 md:mb-12">
         {products.map((product) => (
-          <figure key={product.id} className="w-full">
-            <Card className="relative bg-surface mx-auto pt-0 max-h-[195px] md:min-h-[347px] w-full">
-              <div className="relative w-full min-h-[120px] md:min-h-[220px] overflow-hidden">
+          <figure key={product.id} className="w-full cursor-pointer">
+            <Link href={`/productdescriptive/${product.id}`} className="block w-full">
+            {/* Desktop card fills the grid column (421.33px) and is 347px tall. */}
+            <Card className="relative bg-surface mx-auto pt-0 h-48.75 w-full md:h-86.75 md:w-full">
+              {/* Desktop product image fills the card width and is 220px tall. */}
+              <div className="relative h-30 w-full overflow-hidden md:h-55 md:w-full">
                 <Image
-                  src={`/images/products${product.url}`}
+                  src={product.url}
                   alt={product.name}
                   fill
                   sizes="(max-width: 768px) 50vw, 33vw"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-300 hover:scale-105"
                 />
               </div>
               <CardAction className="absolute top-2 left-2">
@@ -65,12 +58,13 @@ function ProductSection() {
                 </div>
                 <div className="flex px-2.5 justify-between items-center">
                   <p className="">${product.price}</p>
-                  <Button className="bg-logo w-5.5 h-5.5 rounded-sm">
+                  <Button className="bg-logo w-6 h-6 rounded-sm">
                     <Plus />
                   </Button>
                 </div>
               </div>
             </Card>
+            </Link>
           </figure>
         ))}
       </div>

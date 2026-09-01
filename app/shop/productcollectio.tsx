@@ -48,8 +48,18 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import CategoryNavigationPhone from "./navproductphone"
+import { products } from "@/lib/products";
+import Link from "next/link";
 
-function ProductCollection() {
+
+type ProductCollectionProps = {
+  search?: string;
+};
+
+function ProductColection({ search = ""}: ProductCollectionProps) {
+  const normalizedSearch = search.trim().toLowerCase();
+
+
   return (
     <main>
       <nav className="md:flex hidden text-[13px] gap-2 pt-6">
@@ -66,7 +76,8 @@ function ProductCollection() {
             <div className="flex items-baseline md:gap-4">
             <h1 className="md:text-[36px] md:font-extrabold">Audio Collection</h1>
             <span className="md:text-[14px] text-surface font-semibold">
-                6 items
+              {getProducts(normalizedSearch).length} items
+                
             </span>
             </div>
             <nav className="flex gap-4 items-center">
@@ -78,10 +89,10 @@ function ProductCollection() {
       {/* select product handphone */}
       <div className="flex flex-col gap-4 md:hidden px-4 ">
         <CategoryNavigationPhone />
-        <ProductSection />
+        <ProductSection search={normalizedSearch} />
         <div className="flex justify-center w-full py-4 px-6">
           <Button className="bg-logo text-white px-6 py-3 gap-2 rounded-3xl">
-            <Settings className="w-[14px] h-[14px]" />
+            <Settings className="w-3.5 h-3.5" />
             <p className="text-[14px] font-bold">Filter & Sort</p>
           </Button>
         </div>
@@ -90,7 +101,7 @@ function ProductCollection() {
       <div className="md:flex hidden flex-1 lg:gap-10 gap-4 mt-6">
         <CardPriceRange />
         <div className="flex-1">
-          <ProductSection />
+          <ProductSection search={normalizedSearch} />
           <div className="mt-6">
             <PrroductPagination />
           </div>
@@ -100,7 +111,7 @@ function ProductCollection() {
   );
 }
 
-export default ProductCollection;
+export default ProductColection;
 
 
 // =================================
@@ -117,7 +128,7 @@ function CardPriceRange() {
           step={5}
           className="mx-auto w-full max-w-xs "
         />
-        <div className="flex justify-between text-[12px] text-[#8F8FA4]">
+        <div className="flex justify-between text-[12px] text-gray">
           <p>$0</p>
           <p>$500</p>
         </div>
@@ -125,7 +136,7 @@ function CardPriceRange() {
 
       <div className="flex flex-col gap-3 mb-8">
         <h3 className="text-[14px] font-bold">CATEGORY</h3>
-        <div className="flex flex-col gap-3 text-[13px] text-[#8F8FA4]">
+        <div className="flex flex-col gap-3 text-[13px] text-gray">
           <Field orientation="horizontal">
             <Checkbox className="data-[state=checked]:border-logo"/>
             <FieldLabel htmlFor="five-star">Over-Ear Headphones</FieldLabel>
@@ -188,9 +199,9 @@ function CardPriceRange() {
         <Separator />
 
       <div className="mt-8">
-        <Field orientation="horizontal" className="flex items-center h-[20px]">
+        <Field orientation="horizontal" className="flex items-center h-5">
           <FieldLabel htmlFor="stock" className="text-[14px] font-bold">IN STOKY ONLY</FieldLabel>
-          <Switch id="stock" className="!w-[36px] !h-[20px] focus:bg-logo" />
+          <Switch id="stock" className="w-9! h-5! focus:bg-logo" />
         </Field>
       </div>
     </Card>
@@ -237,153 +248,61 @@ function ToggleGroupOutline() {
 //==========================================
 // PRODUCT LIST
 //==========================================
-function ProductSection() {
+function getProducts(search: string) {
+  return search
+    ? products.filter((product) => product.name.toLowerCase().includes(search))
+    : products;
+}
+
+function ProductSection({ search }: { search: string }) {
+  const filteredProducts = getProducts(search);
+
+  if(filteredProducts.length === 0) {
+    return (
+      <p className="col-span-full py-16 text-center text-surface">
+        No products found for &quot;{search}&quot;.
+      </p>
+    );
+  }
+
+
+
   return (
     <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:mb-12 w-full">
-      <figure className="w-full">
-        <Card className="relative bg-surface mx-auto pt-0 max-h-[195px] md:min-h-[347px] w-full">
-          <div className="relative w-full min-h-[120px] md:min-h-[220px]">
-            <Image
-              src="/images/img-azer.png"
-              alt="Event cover"
-              fill
-              className="relative aspect-video  w-full object-cover brightness-60 grayscale dark:brightness-40"
-            />
-          </div>
-          <CardAction className="absolute top-2 left-2">
-            <Badge className=" bg-logo text-white z-20 rounded-sm font-bold">
-              New
-            </Badge>
-          </CardAction>
-          <div className="">
-            <h2 className="ml-2.5 text-[12px] font-bold">SoundWave Alpha</h2>
-            <div className="flex ml-2.5">
-              <Star className="w-2.5 h-2.5 text-logo" />
-              <Star className="w-2.5 h-2.5 text-logo" />
-              <Star className="w-2.5 h-2.5 text-logo" />
-              <Star className="w-2.5 h-2.5 text-logo" />
-              <Star className="w-2.5 h-2.5" />
+      {filteredProducts.map((product) => (
+        <figure className="w-full" key={product.id}>
+          <Link href={`/productdescriptive/${product.id}`}>
+          <Card className="relative bg-surface mx-auto pt-0 max-h-48.75 md:min-h-86.75 w-full">
+            <div className="relative w-full min-h-30 md:min-h-55">
+              <Image
+                src={product.url}
+                alt={product.name}
+                fill
+                className="relative aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
+              />
             </div>
-            <div className="flex px-2.5 justify-between items-center">
-              <p className="">$259.99</p>
-              <Button className="bg-logo w-5.5 h-5.5 rounded-sm">
-                <Plus />
-              </Button>
-            </div>
-          </div>
-        </Card>
-      </figure>
-
-      <figure className="w-full">
-        <Card className="relative bg-surface mx-auto pt-0 max-h-[195px] md:min-h-[347px] w-full">
-          <div className="relative w-full min-h-[120px] md:min-h-[220px]">
-            <Image
-              src="/images/img-azer.png"
-              alt="Event cover"
-              fill
-              className="relative aspect-video  w-full object-cover brightness-60 grayscale dark:brightness-40"
-            />
-          </div>
-          <div className="">
             <CardAction className="absolute top-2 left-2">
-              <Badge
-                variant="secondary"
-                className="bg-logo text-white z-22 rounded-sm font-bold"
-              >
+              <Badge className="bg-logo text-white z-20 rounded-sm font-bold">
                 New
               </Badge>
             </CardAction>
-            <h2 className="ml-2.5 text-[12px] font-bold">SoundWave Alpha</h2>
-            <div className="flex ml-2.5">
-              <Star className="w-2.5 h-2.5 text-logo" />
-              <Star className="w-2.5 h-2.5 text-logo" />
-              <Star className="w-2.5 h-2.5 text-logo" />
-              <Star className="w-2.5 h-2.5 text-logo" />
-              <Star className="w-2.5 h-2.5" />
+            <div>
+              <h2 className="ml-2.5 text-[12px] font-bold">{product.name}</h2>
+              <div className="flex ml-2.5" aria-label="4 out of 5 stars">
+                {[1, 2, 3, 4].map((star) => <Star key={star} className="w-2.5 h-2.5 text-logo" />)}
+                <Star className="w-2.5 h-2.5" />
+              </div>
+              <div className="flex px-2.5 justify-between items-center">
+                <p>${product.price.toFixed(2)}</p>
+                <Button aria-label={`Add ${product.name} to cart`} className="bg-logo w-5.5 h-5.5 rounded-sm">
+                  <Plus />
+                </Button>
+              </div>
             </div>
-            <div className="flex px-2.5 justify-between items-center">
-              <p className="">$259.99</p>
-              <Button className="bg-logo w-5.5 h-5.5 rounded-sm">
-                <Plus />
-              </Button>
-            </div>
-          </div>
-        </Card>
-      </figure>
-
-      <figure className="w-full">
-        <Card className="relative bg-surface mx-auto pt-0 max-h-[195px] md:min-h-[347px] w-full">
-          <div className="relative w-full min-h-[120px] md:min-h-[220px]">
-            <Image
-              src="/images/img-azer.png"
-              alt="Event cover"
-              fill
-              className="relative aspect-video  w-full object-cover brightness-60 grayscale dark:brightness-40"
-            />
-          </div>
-          <div className="">
-            <CardAction className="absolute top-2 left-2">
-              <Badge
-                variant="secondary"
-                className="bg-logo text-white z-22 rounded-sm font-bold"
-              >
-                New
-              </Badge>
-            </CardAction>
-            <h2 className="ml-2.5 text-[12px] font-bold">SoundWave Alpha</h2>
-            <div className="flex ml-2.5">
-              <Star className="w-2.5 h-2.5 text-logo" />
-              <Star className="w-2.5 h-2.5 text-logo" />
-              <Star className="w-2.5 h-2.5 text-logo" />
-              <Star className="w-2.5 h-2.5 text-logo" />
-              <Star className="w-2.5 h-2.5" />
-            </div>
-            <div className="flex px-2.5 justify-between items-center">
-              <p className="">$259.99</p>
-              <Button className="bg-logo w-5.5 h-5.5 rounded-sm">
-                <Plus />
-              </Button>
-            </div>
-          </div>
-        </Card>
-      </figure>
-
-      <figure className="w-full">
-        <Card className="relative bg-surface mx-auto pt-0 max-h-[195px] md:min-h-[347px] w-full">
-          <div className="relative w-full min-h-[120px] md:min-h-[220px]">
-            <Image
-              src="/images/img-azer.png"
-              alt="Event cover"
-              fill
-              className="relative aspect-video  w-full object-cover brightness-60 grayscale dark:brightness-40"
-            />
-          </div>
-          <div className="">
-            <CardAction className="absolute top-2 left-2">
-              <Badge
-                variant="secondary"
-                className="bg-logo text-white z-22 rounded-sm font-bold"
-              >
-                New
-              </Badge>
-            </CardAction>
-            <h2 className="ml-2.5 text-[12px] font-bold">SoundWave Alpha</h2>
-            <div className="flex ml-2.5">
-              <Star className="w-2.5 h-2.5 text-logo" />
-              <Star className="w-2.5 h-2.5 text-logo" />
-              <Star className="w-2.5 h-2.5 text-logo" />
-              <Star className="w-2.5 h-2.5 text-logo" />
-              <Star className="w-2.5 h-2.5" />
-            </div>
-            <div className="flex px-2.5 justify-between items-center">
-              <p className="">$259.99</p>
-              <Button className="bg-logo w-5.5 h-5.5 rounded-sm">
-                <Plus />
-              </Button>
-            </div>
-          </div>
-        </Card>
-      </figure>
+          </Card>
+          </Link>
+        </figure>
+      ))}
     </div>
   );
 }

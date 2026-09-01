@@ -1,9 +1,16 @@
 import ProductCollection from "./productcollectio";
 import FooterSection from "../component/footersection";
-function Shop() {
+
+type ShopProps = {
+  searchParams : Promise<{ search?: string}>;
+};
+
+async function Shop({ searchParams }: ShopProps) {
+  const { search = "" } = await searchParams;
+
   return (
     <div className="md:px-16" >
-      <ProductCollection />
+      <ProductCollection search={search} />
       <FooterSection />
     </div>
   );

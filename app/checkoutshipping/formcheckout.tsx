@@ -31,7 +31,7 @@ function FormCheckout() {
         <div className="flex justify-between">
           <button className="flex items-center">
             <ChevronLeft className="w-3 h-3 text-gray"/>
-            <p className="text-gray text-[14px]">Return To Cart</p>
+            <p className="text-gray md:text-[10px] lg:text-[14px]">Return To Cart</p>
           </button>
 
           <Button className="flex items-center bg-logo/90 hover:bg-logo text-white rounded-md">

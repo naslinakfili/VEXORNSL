@@ -18,11 +18,11 @@ function CheckoutShipping() {
 
             {/* handphone device */}
 
-            <div>
+            <div className="md:hidden">
                 <NavCheckoutphone />
             </div>
 
-            <div className="h-full">
+            <div className="md:hidden h-full">
                 <FormOrderHandphone />
             </div>
 

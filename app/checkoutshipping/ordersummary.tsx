@@ -1,5 +1,5 @@
 import Image from "next/image";
-import handphoneImg from "@/public/images/img-azer.png";
+import laptopImg from "@/public/images/products/electronics/labtop/labtop-azer-main/labtop-azer-main01.png";
 import { Separator } from "@/components/ui/separator";
 
 function OrderSummary() {
@@ -9,7 +9,7 @@ function OrderSummary() {
                 <h1 className="text-[18px] font-bold mb-6">Order Summary</h1>
             <ul className="flex flex-col gap-4">
                 <li className="flex gap-4 items-center">
-                    <Image className="w-14 h-14 object-cover rounded-md" src={handphoneImg} alt="Handphone product image" width={100} height={86} priority />
+                    <Image className="w-14 h-14 object-cover rounded-md" src={laptopImg} alt="Azer laptop product image" width={100} height={86} priority />
                     <article className="flex gap-4 justify-between items-center w-full">
                         <div>
                             <h2 className="text-[14px] font-semibold">Azer Labtops Max</h2>
@@ -20,7 +20,7 @@ function OrderSummary() {
                 </li>
 
                 <li className="flex gap-4 items-center">
-                    <Image className="w-14 h-14 object-cover rounded-md" src={handphoneImg} alt="Handphone product image" width={100} height={86} priority />
+                    <Image className="w-14 h-14 object-cover rounded-md" src={laptopImg} alt="Azer laptop product image" width={100} height={86} priority />
                     <article className="flex gap-4 justify-between items-center w-full">
                         <div>
                             <h2 className="text-[14px] font-semibold">Azer Labtops Max</h2>
