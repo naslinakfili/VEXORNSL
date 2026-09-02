@@ -2,6 +2,7 @@ import ProductGallery from "../productgallery";
 import ProductInformation from "../productinformation";
 import ProductRelate from "../productrelate";
 import FooterSection from "../../component/footersection";
+import { products } from "@/lib/products";
 
 // Interface untuk struktur data Produk
 interface Product {
@@ -18,24 +19,19 @@ interface ProductDescriptiveProps {
   params: Promise<{ id?: string }>; // Parameter pencarian yang berisi ID produk (opsional)
 }
 
-// Revalidate setiap 60 detik (ISR)
-export const revalidate = 60;
 
 // Komponen async untuk menampilkan detail produk
 async function ProductDescriptive({ params }: ProductDescriptiveProps) {
   // Menunggu hasil dari searchParams dan mengambil nilai id
   const { id } = await params;
 
-  // Fetch data produk dari API
-  const response = await fetch("/api/products", {
-    next: { revalidate: 60 }
-  });
+
 
   // Convert response ke array produk
-  const products: Product[] = await response.json();
+  const productList: Product[] = products;
 
   // Cari produk berdasarkan id dari searchParams, jika tidak ditemukan gunakan produk pertama
-  const product = products.find((item) => item.id === Number(id) ) ?? products[0];
+  const product = productList.find((item) => item.id === Number(id) ) ?? products[0];
 
   return (
     <div className="flex flex-col md:px-16 px-4 pt-6">

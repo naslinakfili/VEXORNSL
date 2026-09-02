@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Card, CardAction } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -14,7 +15,7 @@ function Footer() {
       </h2>
       <div className="md:flex hidden gap-3 mb-6 w-full">
         <figure className="">
-          <Card className="relative bg-surface pt-0 min-w-[160px] max-w-[160px] h-[162px] w-full">
+          <Card className="relative bg-surface pt-0 min-w-40 max-w-40 h-40.5 w-full">
             <div className="relative w-full h-22.5">
               <Image
                 src="/images/img-azer.png"
@@ -103,12 +104,14 @@ function Footer() {
           <span className="text-[20px] font-bold">$584.53</span>
         </div>
 
-        <Button className="bg-logo/90 hover:bg-logo mt-1 py-4 rounded-md">
-          <p className="text-[16px] font-bold text-white">
-            Proceed to Checkout
-          </p>
-          <ArrowRight className="w-4 h-4 text-white" />
-        </Button>
+        <Link href="/checkoutshipping" className="w-full">
+          <Button className="bg-logo/90 hover:bg-logo mt-1 py-4 rounded-md w-full">
+            <p className="text-[16px] font-bold text-white">
+              Proceed to Checkout
+            </p>
+            <ArrowRight className="w-4 h-4 text-white" />
+          </Button>
+        </Link>
 
         <div className="flex justify-center py-3">
           <p className="font-semibold text-gray">Countinue Shopping</p>
