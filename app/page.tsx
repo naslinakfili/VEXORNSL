@@ -1,18 +1,19 @@
-import Link from "next/link";
+import HeroSection from "./homepage/herosection";
+import CategoryNavigation from "./homepage/categorynavigation";
+import ProductSection from "./homepage/productsection";
+import BannerSection from "./homepage/bannersection";
+import Testimonial from "./homepage/testimonial";
+import FooterSection from "./component/footersection";
 
 export default function Home() {
   return (
- <div>
-  <Link href="./homepage">HOMEPAGE</Link><br />
-  <Link href="./shop">SHOP</Link><br />
-  <Link href="./productdescriptive/1">PRODUCT</Link><br />
-  <Link href="./cartdrawer">CARTDRAWER</Link><br />
-  <Link href="./checkoutshipping">CHECKOUTSHIPPING</Link>
-
-  <div className="flex items-center flex-col">
-    <p>currently under development;</p>
-    <p>you can try it out on the left.</p>
-  </div>
- </div>
+    <div className="lg:px-16 px-4">
+      <HeroSection />
+      <CategoryNavigation />
+      <ProductSection />
+      <BannerSection />
+      <Testimonial />
+      <FooterSection />
+    </div>
   );
 }
