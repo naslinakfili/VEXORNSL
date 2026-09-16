@@ -39,13 +39,13 @@ export default function Header() {
             <Link className="text-[14px] font-semibold" href="/shop">
               Shop
             </Link>
-            <Link className="text-[14px] font-semibold" href="/about">
+            <a className="text-[14px] font-semibold" href="#about">
               About
-            </Link>
+            </a>
           </div>
           <Link
             className="flex items-center text-[0.8rem] font-semibold"
-            href="/bag"
+            href="/cartdrawer"
           >
             <ShoppingCart className="w-4.5 h-4.5 mx-2 my-2" />
             <div className="flex justify-center items-center bg-logo w-4 h-4 rounded-full text-[9px] font-bold">

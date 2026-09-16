@@ -1,34 +1,86 @@
-import { ArrowRight, PlayCircle} from "lucide-react";
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import Image from 'next/image';
-import LinkShopinHeroBanner from "./linkshop"
+"use client";
+
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, PlayCircle } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
+function HeroSection() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
 
-function HeroSection () {
-    return (
-        <section className="hero flex md:flex-row flex-col  justify-between w-full mt-4 lg:gap-16 md:gap-4 md:mt-16">
-            
-            <div className="flex flex-col lg:max-w-[648px] w-full">
-                <Badge variant="outline" className="flex items-center text-[12px] font-bold md:mb-8 mb-2">
-                    <div className="bg-logo w-2 h-2 rounded-md"></div>
-                    <p className="text-[10px] font-semibold">LAUNCH EDITION</p>
-                </Badge>
+  return (
+    <section className="hero flex md:flex-row flex-col  justify-between w-full mt-4 lg:gap-16 md:gap-4 md:mt-16">
+      <div className="flex flex-col lg:max-w-[648px] w-full">
+        <Badge
+          variant="outline"
+          className="flex items-center text-[12px] font-bold md:mb-8 mb-2"
+        >
+          <div className="bg-logo w-2 h-2 rounded-md"></div>
+          <p className="text-[10px] font-semibold">LAUNCH EDITION</p>
+        </Badge>
 
-                <h1 className="lg:text-[64px] text-[32px] text-4xl font-extrabold mb-2">Engineered for Tomorrow</h1>
-                <p className="lg:text-[18px] text-[14px] lg:font-semibold text-white/30">Step into the future of sound and performance. Expirience ultra-premium hardware designed specifically for modern  digital creators.</p>
+        <h1 className="lg:text-[64px] text-[32px] text-4xl font-extrabold mb-2">
+          Engineered for Tomorrow
+        </h1>
+        <p className="lg:text-[18px] text-[14px] lg:font-semibold text-white/30">
+          Step into the future of sound and performance. Expirience
+          ultra-premium hardware designed specifically for modern digital
+          creators.
+        </p>
 
-               <LinkShopinHeroBanner />
-            </div>
+        <div className="flex w-full gap-4 md:mb-0 md:mt-8 mt-4">
+          <Link
+            href="./shop"
+            className="flex w-full items-center justify-center gap-2 md:w-auto"
+          >
+            <Button className="flex-1 rounded-sm bg-logo px-5 text-[1rem] text-white hover:bg-logo/85 md:flex-none md:py-0 py-5">
+              Shop Collection
+              <ArrowRight />
+            </Button>
+          </Link>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => setIsVideoOpen(true)}
+            className="hidden rounded-sm px-5 text-[1rem] md:flex"
+          >
+            Watch Film
+            <PlayCircle />
+          </Button>
+        </div>
+      </div>
 
-            <div className="relative lg:min-w-[550px] lg:min-h-[400px] w-full min-h-[180px]">
-                        <Image src="/images/Hero-Right-Media.png" alt="Hero Image" fill className="object-cover rounded-2xl" />
-            </div>
-        
-        </section>
-
-    )
+      <div className="relative lg:min-w-[550px] lg:min-h-[400px] w-full min-h-[180px]">
+        {isVideoOpen ? (
+          <video
+            src="/vidios/hero1.mp4"
+            autoPlay
+            controls
+            playsInline
+            onEnded={() => setIsVideoOpen(false)}
+            className="h-full w-full rounded-2xl object-cover"
+          />
+        ) : (
+          <button
+            type="button"
+            aria-label="Putar video hero"
+            onClick={() => setIsVideoOpen(true)}
+            className="group relative h-full w-full overflow-hidden rounded-2xl text-left"
+          >
+            <Image
+              src="/images/Hero-Right-Media.png"
+              alt="Preview video hero"
+              fill
+              priority
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </button>
+        )}
+      </div>
+    </section>
+  );
 }
 
-export default HeroSection
+export default HeroSection;

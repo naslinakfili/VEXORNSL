@@ -5,6 +5,7 @@ import Image from "next/image";
 import styles from "./cartdarwer.module.css";
 import InputNumber from "./inputnumber";
 import Remove from "./remove";
+import Close from "./close";
 
 interface Product {
   id: number;
@@ -30,9 +31,7 @@ export default function Header({ products }: HeaderProps) {
           </span>
         </h1>
 
-        <Button variant="outline" className="border-none rounded-full p-2">
-          <X className="w-4 h-4" />
-        </Button>
+        <Close />
       </header>
 
       <section className="flex flex-col gap-3 bg-surface md:bg-gray/10 border px-4 py-4 rounded-lg mb-6">
