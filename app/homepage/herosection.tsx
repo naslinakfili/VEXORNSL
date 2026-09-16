@@ -11,8 +11,8 @@ function HeroSection() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   return (
-    <section className="hero flex md:flex-row flex-col  justify-between w-full mt-4 lg:gap-16 md:gap-4 md:mt-16">
-      <div className="flex flex-col lg:max-w-[648px] w-full">
+    <section className="hero flex flex-col justify-between w-full gap-8 mt-4 md:flex-row md:gap-4 md:mt-16 lg:gap-16">
+      <div className="flex w-full flex-col lg:max-w-162">
         <Badge
           variant="outline"
           className="flex items-center text-[12px] font-bold md:mb-8 mb-2"
@@ -30,7 +30,7 @@ function HeroSection() {
           creators.
         </p>
 
-        <div className="flex w-full gap-4 md:mb-0 md:mt-8 mt-4">
+        <div className="flex items-center w-full gap-4 md:mb-0 md:mt-8 mt-4">
           <Link
             href="./shop"
             className="flex w-full items-center justify-center gap-2 md:w-auto"
@@ -44,7 +44,7 @@ function HeroSection() {
             type="button"
             variant="outline"
             onClick={() => setIsVideoOpen(true)}
-            className="hidden rounded-sm px-5 text-[1rem] md:flex"
+            className="flex rounded-sm px-5 text-[1rem]"
           >
             Watch Film
             <PlayCircle />
@@ -52,7 +52,7 @@ function HeroSection() {
         </div>
       </div>
 
-      <div className="relative lg:min-w-[550px] lg:min-h-[400px] w-full min-h-[180px]">
+      <div className="relative aspect-4/3 w-full min-h-45 lg:min-h-100 lg:min-w-137.5">
         {isVideoOpen ? (
           <video
             src="/vidios/hero1.mp4"
@@ -60,14 +60,14 @@ function HeroSection() {
             controls
             playsInline
             onEnded={() => setIsVideoOpen(false)}
-            className="h-full w-full rounded-2xl object-cover"
+            className="absolute inset-0 h-full w-full rounded-2xl object-cover"
           />
         ) : (
           <button
             type="button"
             aria-label="Putar video hero"
             onClick={() => setIsVideoOpen(true)}
-            className="group relative h-full w-full overflow-hidden rounded-2xl text-left"
+            className="group absolute inset-0 h-full w-full overflow-hidden rounded-2xl text-left"
           >
             <Image
               src="/images/Hero-Right-Media.png"
