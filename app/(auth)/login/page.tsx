@@ -9,7 +9,6 @@ import Link from "next/link";
 
 export default function Login() {
   const router = useRouter();
-  const supabase = createClient();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,6 +18,7 @@ export default function Login() {
     event.preventDefault();
     setError("");
 
+    const supabase = createClient();
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -64,8 +64,12 @@ export default function Login() {
 
         {error && <p className="text-sm text-red-500">{error}</p>}
 
-        <Button variant="outline" type="submit">Login</Button>
-        <Link href="/register" className="text-white">belum punya akun?</Link>
+        <Button variant="outline" type="submit">
+          Login
+        </Button>
+        <Link href="/register" className="text-white">
+          belum punya akun?
+        </Link>
       </Field>
     </form>
   );

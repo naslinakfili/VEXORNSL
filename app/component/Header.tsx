@@ -15,9 +15,10 @@ import type { User as SupabaseUser } from "@supabase/supabase-js";
 
 export default function Header() {
   const [user, setUser] = useState<SupabaseUser | null>(null);
-  const [supabase] = useState(createClient);
 
   useEffect(() => {
+    const supabase = createClient();
+
     const fetchUser = async () => {
       const {
         data: { user },
@@ -34,7 +35,7 @@ export default function Header() {
     });
 
     return () => subscription.unsubscribe();
-  }, [supabase]);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 py-5 lg:px-16 px-4 w-full border-b bg-[#0A0A0F]">

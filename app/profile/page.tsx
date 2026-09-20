@@ -8,10 +8,11 @@ import { createClient } from "@/lib/supabase/client";
 
 export default function ProfilePage() {
   const router = useRouter();
-  const [supabase] = useState(createClient);
   const [user, setUser] = useState<SupabaseUser | null>(null);
 
   useEffect(() => {
+    const supabase = createClient();
+
     const loadUser = async () => {
       const {
         data: { user },
@@ -26,9 +27,10 @@ export default function ProfilePage() {
     };
 
     loadUser();
-  }, [router, supabase]);
+  }, [router]);
 
   async function handleLogout() {
+    const supabase = createClient();
     await supabase.auth.signOut();
     router.replace("/login");
     router.refresh();

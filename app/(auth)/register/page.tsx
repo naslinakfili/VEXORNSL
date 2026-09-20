@@ -9,7 +9,6 @@ import { InputGroup, InputGroupInput } from "@/components/ui/input-group";
 
 function Register() {
   const router = useRouter();
-  const supabase = createClient();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -28,6 +27,7 @@ function Register() {
       return;
     }
 
+    const supabase = createClient();
     const { error } = await supabase.auth.signUp({
       email,
       password,
