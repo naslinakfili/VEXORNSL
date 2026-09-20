@@ -81,7 +81,7 @@ export default function Header() {
             </div>
           </Link>
           {user ? (
-            <Link href="/profile" className="md:flex hidden items-center">
+            <Link href="/profile" className="flex items-center">
               {user.user_metadata?.avatar_url ? (
                 <Image
                   src={user.user_metadata.avatar_url}
@@ -99,7 +99,7 @@ export default function Header() {
               )}
             </Link>
           ) : (
-            <Link href="/login" className="md:flex hidden">
+            <Link href="/login" className="flex">
               <User className="w-4 h-4" />
             </Link>
           )}
