@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { Search, ShoppingCart, User, Sun, Moon } from "lucide-react";
 import {
   InputGroup,
@@ -6,8 +9,33 @@ import {
 } from "@/components/ui/input-group";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { createClient } from "@/lib/supabase/client";
+import type { User as SupabaseUser } from "@supabase/supabase-js";
 
 export default function Header() {
+  const [user, setUser] = useState<SupabaseUser | null>(null);
+  const [supabase] = useState(createClient);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      setUser(user);
+    };
+
+    fetchUser();
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, [supabase]);
+
   return (
     <header className="sticky top-0 z-50 py-5 lg:px-16 px-4 w-full border-b bg-[#0A0A0F]">
       <nav className="flex justify-between items-center gap-4">
@@ -52,9 +80,29 @@ export default function Header() {
               1
             </div>
           </Link>
-          <Link href="/profil" className="md:flex hidden">
-            <User className="w-4 h-4" />
-          </Link>
+          {user ? (
+            <Link href="/profile" className="md:flex hidden items-center">
+              {user.user_metadata?.avatar_url ? (
+                <Image
+                  src={user.user_metadata.avatar_url}
+                  alt="Profile"
+                  width={28}
+                  height={28}
+                  unoptimized
+                  className="rounded-full border border-gray-600 object-cover"
+                />
+              ) : (
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-logo text-xs font-semibold text-white">
+                  {user.user_metadata?.full_name?.charAt(0) ||
+                    user.email?.charAt(0).toUpperCase()}
+                </span>
+              )}
+            </Link>
+          ) : (
+            <Link href="/login" className="md:flex hidden">
+              <User className="w-4 h-4" />
+            </Link>
+          )}
           <Button
             variant="outline"
             size="icon"
