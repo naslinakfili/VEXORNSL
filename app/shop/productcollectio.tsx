@@ -278,7 +278,7 @@ function ProductSection({ search }: { search: string }) {
                 src={product.url}
                 alt={product.name}
                 fill
-                className="relative aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
+                className="relative aspect-video w-full object-cover transition-transform duration-300 hover:scale-105"
               />
             </div>
             <CardAction className="absolute top-2 left-2">
