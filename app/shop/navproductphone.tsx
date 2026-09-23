@@ -23,7 +23,7 @@ function CategoryNavigationPhone() {
                     <li key={btn.id}>
                         <Button
                          variant={btnActive === btn.id ? "default" : "outline"}
-                         className={`rounded-full px-4 ${btn.id === btnActive? "bg-logo hover:bg-logo" : ""}`}
+                         className={`rounded-full px-2 ${btn.id === btnActive? "bg-logo hover:bg-logo" : ""}`}
                          onClick={() =>  setBtnActive(btn.id)}>
                         {btn.label}
 

@@ -1,4 +1,7 @@
+export type ProductCategory = "audio" | "laptops" | "wearables";
+
 export interface Product {
+  tipe: ProductCategory;
   id: number;
   name: string;
   price: number;
@@ -9,6 +12,7 @@ export interface Product {
 
 export const products: Product[] = [
   {
+    tipe: "laptops",
     id: 1,
     name: "Labtop Azer",
     price: 450,
@@ -17,6 +21,7 @@ export const products: Product[] = [
     size: "Standart, pro, mini"
   },
   {
+    tipe: "audio",
     id: 2,
     name: "Earpondes",
     price: 75,
@@ -24,12 +29,14 @@ export const products: Product[] = [
     color: "white,black",
   },
   {
+    tipe: "audio",
     id: 3,
     name: "Hanset Bluetoutch",
     price: 45,
     url: "/images/products/aksessories/chargers/charger-main01.png",
   },
   {
+    tipe: "laptops",
     id: 4,
     name: "Mouse Gaming",
     price: 55,

@@ -1,20 +1,25 @@
 'use client'
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import type { ProductCategory } from "@/lib/products";
+export type SelectedCategory = "all" | ProductCategory
 
-interface NavBtn{
-    id: number,
+interface NavBtn {
+    id: SelectedCategory,
     label: string,
 }
 
-function CategoryNavigation() {
-    const [btnActive, setBtnActive] = useState(1);
 
-    const buttons : NavBtn[] = [
-        { id: 1, label: "All" },
-        { id: 2, label: "Audio" },
-        { id: 3, label: "Laptops" },
-        { id: 4, label: "Warables" },
+interface CategoryNavigationProps {
+    selectedCategory: SelectedCategory;
+    onCategoryChange: (category: SelectedCategory) => void;
+}
+
+function CategoryNavigation({ selectedCategory, onCategoryChange }: CategoryNavigationProps) {
+    const buttons: NavBtn[] = [
+        { id: "all", label: "All" },
+        { id: "audio", label: "Audio" },
+        { id: "laptops", label: "Laptops" },
+        { id: "wearables", label: "Wearables" },
     ]
 
     return(
@@ -23,9 +28,9 @@ function CategoryNavigation() {
                 {buttons.map((btn) => (
                     <li key={btn.id}>
                         <Button
-                         variant={btnActive === btn.id ? "default" : "outline"}
-                         className={`rounded-full px-4 ${btn.id === btnActive? "bg-logo hover:bg-logo" : ""}`}
-                         onClick={() =>  setBtnActive(btn.id)}>
+                        variant={selectedCategory === btn.id ? "default" : "outline"}
+                        className={`rounded-full px-4 ${btn.id === selectedCategory ? "bg-logo hover:bg-logo" : ""}`}
+                        onClick={() => onCategoryChange(btn.id)}>
                         {btn.label}
 
                         </Button>

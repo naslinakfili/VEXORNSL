@@ -4,20 +4,17 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardAction } from "@/components/ui/card";
 import Image from "next/image";
-import { products } from "@/lib/products";
+import { products, type ProductCategory } from "@/lib/products";
 
-interface ProductItems {
-  id: number;
-  name: string;
-  price: number;
-  url: string;
+interface ProductSectionProps {
+  selectedCategory: "all" | ProductCategory;
 }
 
+function ProductSection({ selectedCategory }: ProductSectionProps) {
 
-
-async function ProductSection() {
-
-  const productList: ProductItems[] = products;
+  const productList = selectedCategory === "all"
+    ? products
+    : products.filter((product) => product.tipe === selectedCategory);
 
 
   return (
@@ -29,7 +26,11 @@ async function ProductSection() {
         </Button>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 w-full gap-3 mt-4 md:mt-10 md:mb-12">
-        {productList.map((product) => (
+        {productList.length === 0 ? (
+          <p className="col-span-full py-8 text-center text-sm text-muted-foreground">
+            No products found in this category.
+          </p>
+        ) : productList.map((product) => (
           <figure key={product.id} className="w-full cursor-pointer">
             <Link href={`/productdescriptive/${product.id}`} className="block w-full">
             {/* Desktop card fills the grid column (421.33px) and is 347px tall. */}
