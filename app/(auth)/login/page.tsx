@@ -33,6 +33,20 @@ export default function Login() {
     router.refresh();
   }
 
+  async function handleGoogleLogin() {
+    setError("");
+
+    const supabase = createClient();
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback`,
+      },
+    });
+
+    if (error) setError(error.message);
+  }
+
   return (
     <form
       onSubmit={handleLogin}
@@ -66,6 +80,10 @@ export default function Login() {
 
         <Button variant="outline" type="submit">
           Login
+        </Button>
+        <div>OR</div>
+        <Button type="button" variant="outline" onClick={handleGoogleLogin}>
+          Login in Google
         </Button>
         <Link href="/register" className="text-white">
           belum punya akun?
