@@ -1,10 +1,16 @@
 "use client";
+import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
-import { InputGroup, InputGroupInput } from "@/components/ui/input-group";
+import {
+  InputGroup,
+  InputGroupInput,
+  InputGroupAddon,
+  InputGroupButton,
+} from "@/components/ui/input-group";
 import Link from "next/link";
 
 export default function Login() {
@@ -13,6 +19,8 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  const [showPassword, setShowPassword] = useState(false);
 
   async function handleLogin(event: React.SyntheticEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -69,11 +77,18 @@ export default function Login() {
         <InputGroup>
           <InputGroupInput
             required
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="Enter password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
+          <InputGroupAddon align="inline-end" />
+          <InputGroupButton 
+          aria-label={showPassword ? "Sembunyikan password" : "Tampilkan password"}
+          aria-pressed={showPassword}
+          onClick={() => setShowPassword((visible) => !visible)}>
+          {showPassword ? <EyeOff/> : <Eye/>}
+          </InputGroupButton>
         </InputGroup>
 
         {error && <p className="text-sm text-red-500">{error}</p>}
@@ -81,12 +96,12 @@ export default function Login() {
         <Button variant="outline" type="submit">
           Login
         </Button>
-        <div>OR</div>
+        <div className="flex justify-center">OR</div>
         <Button type="button" variant="outline" onClick={handleGoogleLogin}>
-          Login in Google
+          Login with Google
         </Button>
         <Link href="/register" className="text-white">
-          belum punya akun?
+          belum punya akun? Click di sini
         </Link>
       </Field>
     </form>

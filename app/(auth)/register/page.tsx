@@ -1,11 +1,17 @@
 "use client";
+import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Field, FieldLabel } from "@/components/ui/field";
-import { InputGroup, InputGroupInput } from "@/components/ui/input-group";
+import {
+  InputGroup,
+  InputGroupInput,
+  InputGroupAddon,
+  InputGroupButton,
+} from "@/components/ui/input-group";
 
 function Register() {
   const router = useRouter();
@@ -16,6 +22,8 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
+
+  const [showPassword, setShowPassword] = useState(false);
 
   async function handleRegister(event: React.SyntheticEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -83,22 +91,42 @@ function Register() {
           <InputGroupInput
             required
             minLength={6}
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="Enter password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
+          <InputGroupAddon align="inline-end" />
+          <InputGroupButton
+            aria-label={
+              showPassword ? "Sembunyikan password" : "Tampilkan password"
+            }
+            aria-pressed={showPassword}
+            onClick={() => setShowPassword((visible) => !visible)}
+          >
+            {showPassword ? <EyeOff /> : <Eye />}
+          </InputGroupButton>
         </InputGroup>
 
         <InputGroup>
           <InputGroupInput
             required
             minLength={6}
-            type="password"
-            placeholder="Konfirmasi password"
-            value={confirmPassword}
-            onChange={(event) => setConfirmPassword(event.target.value)}
+            type={showPassword ? "text" : "password"}
+            placeholder="Enter password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
           />
+          <InputGroupAddon align="inline-end" />
+          <InputGroupButton
+            aria-label={
+              showPassword ? "Sembunyikan password" : "Tampilkan password"
+            }
+            aria-pressed={showPassword}
+            onClick={() => setShowPassword((visible) => !visible)}
+          >
+            {showPassword ? <EyeOff /> : <Eye />}
+          </InputGroupButton>
         </InputGroup>
 
         {error && <p className="text-sm text-red-500">{error}</p>}

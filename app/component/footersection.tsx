@@ -4,9 +4,11 @@ import {
   FaYoutube,
   FaLinkedin,
 } from "react-icons/fa6";
+import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+
 function FooterSection() {
   return (
     <footer id="about" className="pt-20 mt-12 mx-4 md:border-t">
@@ -90,7 +92,9 @@ function FooterSection() {
               placeholder="Email"
               className="h-11"
             />
-            <Button className="bg-logo p-5">Join</Button>
+            <Link href="login">
+             <Button className="bg-logo p-5">Join</Button>
+            </Link>
           </form>
         </div>
       </div>
