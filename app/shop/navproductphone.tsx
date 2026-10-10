@@ -18,7 +18,7 @@ function CategoryNavigationPhone() {
 
     return(
         <nav className="mt-6 md:mt-16">
-            <ul className="flex gap-2 text-white/40">
+            <ul className="flex gap-2">
                 {buttons.map((btn) => (
                     <li key={btn.id}>
                         <Button

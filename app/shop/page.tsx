@@ -1,4 +1,4 @@
-import ProductCollection from "./productcollectio";
+import ProductCollection from "./productcollection";
 import FooterSection from "../component/footersection";
 
 type ShopProps = {

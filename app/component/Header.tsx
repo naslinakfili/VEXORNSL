@@ -1,4 +1,5 @@
 "use client";
+import { useTheme } from "next-themes";
 
 import { useEffect, useState } from "react";
 import { Search, ShoppingCart, User, Sun, Moon } from "lucide-react";
@@ -37,8 +38,9 @@ export default function Header() {
     return () => subscription.unsubscribe();
   }, []);
 
+  const { resolvedTheme, setTheme } = useTheme();
   return (
-    <header className="sticky top-0 z-50 py-5 lg:px-16 px-4 w-full border-b bg-[#0A0A0F]">
+    <header className={`${() => resolvedTheme === "dark" ? "bg-dark" : "bg-[#0A0A0F]"}sticky top-0 z-50 py-5 lg:px-16 px-4 w-full border-b`}>
       <nav className="flex justify-between items-center gap-4">
         <div className="flex items-center gap-1">
           <div className="w-3 h-3 bg-logo rounded-xs"></div>
@@ -108,10 +110,13 @@ export default function Header() {
             variant="outline"
             size="icon"
             aria-label="theme"
-            className="w-6 h-6 md:flex hidden"
+            onClick={() =>
+              setTheme(resolvedTheme === "dark" ? "light" : "dark")
+            }
+            className="w-8 h-8 md:flex hidden"
           >
-            <Moon className="w-6 h-6 bg-logo rounded-sm" />
-            <Sun className="hidden" />
+            <Sun className="hidden h-4 w-4 dark:block" />
+            <Moon className="block h-4 w-4 dark:hidden" />
           </Button>
         </div>
       </nav>

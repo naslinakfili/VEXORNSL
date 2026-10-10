@@ -44,6 +44,7 @@ export default function ProfilePage() {
     <main className="flex min-h-screen items-center justify-center px-4">
       <section className="flex w-full max-w-sm flex-col gap-4 rounded-lg border p-6">
         <h1 className="text-xl font-bold">Profile</h1>
+        <p>you have a account</p>
         <p className="text-sm text-white/70">
           {user.user_metadata?.full_name || user.email}
         </p>

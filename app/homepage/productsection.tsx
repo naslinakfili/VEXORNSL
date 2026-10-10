@@ -34,7 +34,7 @@ function ProductSection({ selectedCategory }: ProductSectionProps) {
           <figure key={product.id} className="w-full cursor-pointer">
             <Link href={`/productdescriptive/${product.id}`} className="block w-full">
             {/* Desktop card fills the grid column (421.33px) and is 347px tall. */}
-            <Card className="relative bg-surface mx-auto pt-0 h-48.75 w-full md:h-86.75 md:w-full">
+            <Card className="relative dark:bg-surface mx-auto pt-0 h-48.75 w-full md:h-86.75 md:w-full">
               {/* Desktop product image fills the card width and is 220px tall. */}
               <div className="relative h-30 w-full overflow-hidden md:h-55 md:w-full">
                 <Image
@@ -53,10 +53,10 @@ function ProductSection({ selectedCategory }: ProductSectionProps) {
               <div className="">
                 <h2 className="ml-2.5 text-[12px] font-bold">{product.name}</h2>
                 <div className="flex ml-2.5">
-                  <Star className="w-2.5 h-2.5 text-logo" />
-                  <Star className="w-2.5 h-2.5 text-logo" />
-                  <Star className="w-2.5 h-2.5 text-logo" />
-                  <Star className="w-2.5 h-2.5 text-logo" />
+                  <Star className="w-2.5 h-2.5 text-logo fill-current" />
+                  <Star className="w-2.5 h-2.5 text-logo fill-current" />
+                  <Star className="w-2.5 h-2.5 text-logo fill-current" />
+                  <Star className="w-2.5 h-2.5 text-logo fill-current" />
                   <Star className="w-2.5 h-2.5" />
                 </div>
                 <div className="flex px-2.5 justify-between items-center">

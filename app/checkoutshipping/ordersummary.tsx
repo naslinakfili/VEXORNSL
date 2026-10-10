@@ -66,9 +66,10 @@ function OrderSummary() {
         <div className="flex flex-col gap-3 w-full rounded-lg border bg-transparent p-5 text-base transition-colors md:text-sm dark:bg-input/30">
             <p className="text-[12px] font-bold text-gray">ACCEPTED PAYMENT</p>
             <ul className="flex gap-4 text-[12px] font-bold">
-                <li className="bg-black px-2.5 py-1.5 rounded-md border">VISA</li>
-                <li className="bg-black px-2.5 py-1.5 rounded-md border">Apple Pay</li>
-                <li className="bg-black px-2.5 py-1.5 rounded-md border">MASTERCARD</li>
+                <li className="dark:bg-black px-2.5 py-1.5 rounded-md border">VISA</li>
+                <li className="dark:bg-black px-2.5 py-1.5 rounded-md border">Apple Pay</li>
+                <li className="dark:bg-black px-2.5 py-1.5 rounded-md border">MASTERCARD</li>
+                <li className="dark:bg-black px-2.5 py-1.5 rounded-md border">Etc</li>
             </ul>
         </div>
 

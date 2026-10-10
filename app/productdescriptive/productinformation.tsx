@@ -70,10 +70,10 @@ function ProductInformation({ product }: ProductInformationProps) {
       <div className="flex flex-col md:gap-8 gap-5 md:mb-20 mb-4">
         <div className="flex gap-3 items-center mt-4">
           <span className="flex gap-1">
-            <Star className="w-2.5 h-2.5 text-logo" />
-            <Star className="w-2.5 h-2.5 text-logo" />
-            <Star className="w-2.5 h-2.5 text-logo" />
-            <Star className="w-2.5 h-2.5 text-logo" />
+            <Star className="w-2.5 h-2.5 text-logo fill-current" />
+            <Star className="w-2.5 h-2.5 text-logo fill-current" />
+            <Star className="w-2.5 h-2.5 text-logo fill-current" />
+            <Star className="w-2.5 h-2.5 text-logo fill-current" />
             <Star className="w-2.5 h-2.5 text-surface" />
           </span>
           <p className="md:text-[14px] text-[12px] text-[#8F8FA4]">

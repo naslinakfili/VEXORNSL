@@ -19,9 +19,9 @@ function ProductRelate() {
       </div>
 
       <div className="flex overflow-x-auto gap-6 mt-4 md:mt-10  p-8 scrollbar-thin scrollbar-thumb-logo scrollbar-track-transparent">
-        <figure className="flex-none w-[260px] md:w-[300px] lg:w-[320px]">
-          <Card className="relative bg-surface mx-auto pt-0 max-h-[195px] md:min-h-[347px] w-full transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-            <div className="relative w-full min-h-[120px] md:min-h-[220px]">
+        <figure className="flex-none w-65 md:w-75 lg:w-[320px]">
+          <Card className="relative dark:bg-surface mx-auto pt-0 max-h-48.75 md:min-h-86.75 w-full transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+            <div className="relative w-full min-h-30 md:min-h-55">
               <Image
                 src="/images/img-azer.png"
                 alt="Event cover"
@@ -37,10 +37,10 @@ function ProductRelate() {
             <div className="">
               <h2 className="ml-2.5 text-[12px] font-bold">SoundWave Alpha</h2>
               <div className="flex ml-2.5">
-                <Star className="w-2.5 h-2.5 text-logo" />
-                <Star className="w-2.5 h-2.5 text-logo" />
-                <Star className="w-2.5 h-2.5 text-logo" />
-                <Star className="w-2.5 h-2.5 text-logo" />
+                <Star className="w-2.5 h-2.5 text-logo fill-current" />
+                <Star className="w-2.5 h-2.5 text-logo fill-current" />
+                <Star className="w-2.5 h-2.5 text-logo fill-current" />
+                <Star className="w-2.5 h-2.5 text-logo fill-current" />
                 <Star className="w-2.5 h-2.5" />
               </div>
               <div className="flex px-2.5 justify-between items-center">
@@ -53,9 +53,46 @@ function ProductRelate() {
           </Card>
         </figure>
 
-        <figure className="flex-none w-[260px] md:w-[300px] lg:w-[320px]">
-          <Card className="relative bg-surface mx-auto pt-0 max-h-[195px] md:min-h-[347px] w-full transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-            <div className="relative w-full min-h-[120px] md:min-h-[220px]">
+        <figure className="flex-none w-65 md:w-75 lg:w-[320px]">
+          <Card className="relative dark:bg-surface mx-auto pt-0 max-h-48.75 md:min-h-86.75 w-full transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+            <div className="relative w-full min-h-30 md:min-h-55">
+              <Image
+                src="/images/img-azer.png"
+                alt="Event cover"
+                fill
+                className="relative aspect-video  w-full object-cover brightness-60 grayscale dark:brightness-40"
+              />
+            </div>
+            <div className="">
+              <CardAction className="absolute top-2 left-2">
+                <Badge
+                  variant="secondary"
+                  className="bg-logo text-white z-22 rounded-sm font-bold"
+                >
+                  New
+                </Badge>
+              </CardAction>
+              <h2 className="ml-2.5 text-[12px] font-bold">SoundWave Alpha</h2>
+              <div className="flex ml-2.5">
+                <Star className="w-2.5 h-2.5 text-logo fill-current" />
+                <Star className="w-2.5 h-2.5 text-logo fill-current" />
+                <Star className="w-2.5 h-2.5 text-logo fill-current" />
+                <Star className="w-2.5 h-2.5 text-logo fill-current" />
+                <Star className="w-2.5 h-2.5" />
+              </div>
+              <div className="flex px-2.5 justify-between items-center">
+                <p className="">$259.99</p>
+                <Button className="bg-logo w-5.5 h-5.5 rounded-sm">
+                  <Plus />
+                </Button>
+              </div>
+            </div>
+          </Card>
+        </figure>
+
+        <figure className="flex-none w-65 md:w-75 lg:w-[320px]">
+          <Card className="relative dark:bg-surface mx-auto pt-0 max-h-48.75 md:min-h-86.75 w-full transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+            <div className="relative w-full min-h-30 md:min-h-55">
               <Image
                 src="/images/img-azer.png"
                 alt="Event cover"
@@ -90,9 +127,9 @@ function ProductRelate() {
           </Card>
         </figure>
 
-        <figure className="flex-none w-[260px] md:w-[300px] lg:w-[320px]">
-          <Card className="relative bg-surface mx-auto pt-0 max-h-[195px] md:min-h-[347px] w-full transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-            <div className="relative w-full min-h-[120px] md:min-h-[220px]">
+        <figure className="flex-none w-65 md:w-75 lg:w-[320px]">
+          <Card className="relative dark:bg-surface mx-auto pt-0 max-h-48.75 md:min-h-86.75 w-full transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+            <div className="relative w-full min-h-30 md:min-h-55">
               <Image
                 src="/images/img-azer.png"
                 alt="Event cover"
@@ -111,47 +148,10 @@ function ProductRelate() {
               </CardAction>
               <h2 className="ml-2.5 text-[12px] font-bold">SoundWave Alpha</h2>
               <div className="flex ml-2.5">
-                <Star className="w-2.5 h-2.5 text-logo" />
-                <Star className="w-2.5 h-2.5 text-logo" />
-                <Star className="w-2.5 h-2.5 text-logo" />
-                <Star className="w-2.5 h-2.5 text-logo" />
-                <Star className="w-2.5 h-2.5" />
-              </div>
-              <div className="flex px-2.5 justify-between items-center">
-                <p className="">$259.99</p>
-                <Button className="bg-logo w-5.5 h-5.5 rounded-sm">
-                  <Plus />
-                </Button>
-              </div>
-            </div>
-          </Card>
-        </figure>
-
-        <figure className="flex-none w-[260px] md:w-[300px] lg:w-[320px]">
-          <Card className="relative bg-surface mx-auto pt-0 max-h-[195px] md:min-h-[347px] w-full transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-            <div className="relative w-full min-h-[120px] md:min-h-[220px]">
-              <Image
-                src="/images/img-azer.png"
-                alt="Event cover"
-                fill
-                className="relative aspect-video  w-full object-cover brightness-60 grayscale dark:brightness-40"
-              />
-            </div>
-            <div className="">
-              <CardAction className="absolute top-2 left-2">
-                <Badge
-                  variant="secondary"
-                  className="bg-logo text-white z-22 rounded-sm font-bold"
-                >
-                  New
-                </Badge>
-              </CardAction>
-              <h2 className="ml-2.5 text-[12px] font-bold">SoundWave Alpha</h2>
-              <div className="flex ml-2.5">
-                <Star className="w-2.5 h-2.5 text-logo" />
-                <Star className="w-2.5 h-2.5 text-logo" />
-                <Star className="w-2.5 h-2.5 text-logo" />
-                <Star className="w-2.5 h-2.5 text-logo" />
+                <Star className="w-2.5 h-2.5 text-logo fill-current" />
+                <Star className="w-2.5 h-2.5 text-logo fill-current" />
+                <Star className="w-2.5 h-2.5 text-logo fill-current" />
+                <Star className="w-2.5 h-2.5 text-logo fill-current" />
                 <Star className="w-2.5 h-2.5" />
               </div>
               <div className="flex px-2.5 justify-between items-center">

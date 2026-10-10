@@ -42,7 +42,7 @@ export default function Header({ products }: HeaderProps) {
       </section>
 
       <div
-        className={`h-[325px] mb-6 overflow-y-auto overscroll-auto touch-pan-y ${styles["autohide-scrollbar"]}`}
+        className={`h-81.25 mb-6 overflow-y-auto overscroll-auto touch-pan-y ${styles["autohide-scrollbar"]}`}
       >
         <ul className="flex  flex-col">
           {products.map((product, index) => (

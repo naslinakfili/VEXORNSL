@@ -15,7 +15,7 @@ function Footer() {
       </h2>
       <div className="md:flex hidden gap-3 mb-6 w-full">
         <figure className="">
-          <Card className="relative bg-surface pt-0 min-w-40 max-w-40 h-40.5 w-full">
+          <Card className="relative dark:bg-surface pt-0 min-w-40 max-w-40 h-40.5 w-full">
             <div className="relative w-full h-22.5">
               <Image
                 src="/images/img-azer.png"
@@ -42,8 +42,8 @@ function Footer() {
         </figure>
 
         <figure className="">
-          <Card className="relative bg-surface pt-0 min-w-[160px] max-w-[160px] h-[162px] w-full">
-            <div className="relative w-full h-[90px]">
+          <Card className="relative dark:bg-surface pt-0 min-w-40 max-w-40 h-40.5 w-full">
+            <div className="relative w-full h-2.5">
               <Image
                 src="/images/img-azer.png"
                 alt="Event cover"
@@ -74,7 +74,7 @@ function Footer() {
           placeholder="Promo or discount code"
           className="rounded-md px-4 py-3"
         />
-        <Button className="text-semibold px-6 py-3 bg-surface/90 rounded-md hover:bg-surface text-white border md:text-logo md:border-logo">
+        <Button className="font-semibold px-6 py-3 rounded-md text-white border md:text-logo md:border-logo dark:bg-surface/80 hover:dark:bg-surface bg-white hover:bg-white/80">
           Apply
         </Button>
       </form>

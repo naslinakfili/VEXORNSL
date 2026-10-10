@@ -20,17 +20,17 @@ function BannerSection() {
         </div>
 
         <time className="flex items-center gap-2">
-          <Badge variant="outline" className="flex flex-col min-w-[50px] min-h-[45px] bg-black rounded-sm">
+          <Badge  className="flex flex-col min-w-12.5 min-h-11.25 bg-black rounded-sm">
             <span className="text-[14px] font-extrabold text-logo">02</span>
-            <p className="text-[8px]">Days</p>
+            <p className="text-[8px] text-gray">Days</p>
           </Badge>
-          <Badge variant="outline" className="flex flex-col min-w-[50px] min-h-[45px] bg-black rounded-sm">
+          <Badge  className="flex flex-col min-w-12.5 min-h-11.25 bg-black rounded-sm">
             <span className="text-[14px] font-extrabold text-logo">04</span>
-            <p className="text-[8px]">hors</p>
+            <p className="text-[8px] text-gray">hors</p>
           </Badge>
-          <Badge variant="outline" className="flex flex-col min-w-[50px] min-h-[45px] bg-black rounded-sm">
+          <Badge  className="flex flex-col min-w-12.5 min-h-11.25 bg-black rounded-sm">
             <span className="text-[14px] font-extrabold text-logo">14</span>
-            <p className="text-[8px]">mint</p>
+            <p className="text-[8px] text-gray">mint</p>
           </Badge>
           <Button className="text-[11px] font-bold px-3.5 py-2.5">Claim</Button>
         </time>

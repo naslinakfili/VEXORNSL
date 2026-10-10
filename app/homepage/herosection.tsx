@@ -24,7 +24,7 @@ function HeroSection() {
         <h1 className="lg:text-[64px] text-[32px] text-4xl font-extrabold mb-2">
           Engineered for Tomorrow
         </h1>
-        <p className="lg:text-[18px] text-[14px] lg:font-semibold text-white/30">
+        <p className="lg:text-[18px] text-[14px] lg:font-semibold text-dark">
           Step into the future of sound and performance. Expirience
           ultra-premium hardware designed specifically for modern digital
           creators.

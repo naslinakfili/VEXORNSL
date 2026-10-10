@@ -79,7 +79,7 @@ function FooterSection() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-5 max-w-[360px]">
+        <div className="flex flex-col gap-5 max-w-90">
           <h6 className="text-[12px] font-bold">NEWSLATTER</h6>
           <p className="text-gray text-[14px]">
             Subscribe to receive advenced release alerts, excusive deals, and
@@ -93,7 +93,7 @@ function FooterSection() {
               className="h-11"
             />
             <Link href="login">
-             <Button className="bg-logo p-5">Join</Button>
+             <Button className="bg-logo p-5 hover:bg-logo/90">Join</Button>
             </Link>
           </form>
         </div>

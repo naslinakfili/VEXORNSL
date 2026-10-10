@@ -46,7 +46,7 @@ function ProductAcordion() {
       <h2 className="text-[20px] font-bold mb-4">Tecnical Specs</h2>
       <Accordion type="multiple" defaultValue={["item-1"]} className="space-y-3">
         {items.map((item) => (
-          <AccordionItem key={item.value} value={item.value} className="flex flex-col p-5 bg-surface rounded-md border">
+          <AccordionItem key={item.value} value={item.value} className="flex flex-col p-5 dark:bg-surface rounded-md border">
             <AccordionTrigger className="">
               <div className="flex flex-col gap-3">
                 <h3 className="text-[14px] font-bold">{item.triggerhead}</h3>
