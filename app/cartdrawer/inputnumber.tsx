@@ -34,7 +34,7 @@ export default function InputNumber() {
                       value={quantity}
                       onChange={handleInputChange}
                       maxLength={3}
-                      className="flex bg-black! text-[13px] font-bold h-6 w-8 p-0 rounded-none border-0 text-foreground [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ring-0! ring-offset-0! outline-none! shadow-none! focus-visible:ring-0! focus-visible:ring-offset-0! focus-visible:border-input! text-center"
+                      className="flex dark:bg-black! text-[13px] font-bold h-6 w-8 p-0 rounded-none border-0 text-foreground [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ring-0! ring-offset-0! outline-none! shadow-none! focus-visible:ring-0! focus-visible:ring-offset-0! focus-visible:border-input! text-center"
                     ></Input>
                     <Button
                     onClick={handleIncrement}

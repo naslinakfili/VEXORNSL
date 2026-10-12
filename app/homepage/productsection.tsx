@@ -51,7 +51,7 @@ function ProductSection({ selectedCategory }: ProductSectionProps) {
                 </Badge>
               </CardAction>
               <div className="">
-                <h2 className="ml-2.5 text-[12px] font-bold">{product.name}</h2>
+                <h2 className="ml-2.5 text-[16px] font-bold">{product.name}</h2>
                 <div className="flex ml-2.5">
                   <Star className="w-2.5 h-2.5 text-logo fill-current" />
                   <Star className="w-2.5 h-2.5 text-logo fill-current" />
@@ -60,8 +60,8 @@ function ProductSection({ selectedCategory }: ProductSectionProps) {
                   <Star className="w-2.5 h-2.5" />
                 </div>
                 <div className="flex px-2.5 justify-between items-center">
-                  <p className="">${product.price}</p>
-                  <Button className="bg-logo w-6 h-6 rounded-sm">
+                  <p className="text-[16px] font-bold">${product.price}</p>
+                  <Button className="bg-logo hover:bg-logo/90 w-10 h-10 rounded-sm">
                     <Plus />
                   </Button>
                 </div>

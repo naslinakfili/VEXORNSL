@@ -1,167 +1,126 @@
 # VEXOR
 
-VEXOR adalah proyek toko elektronik yang dibangun dengan Next.js dan TypeScript. Pengunjung bisa mencari produk, melihat detailnya, menambahkan barang ke keranjang, dan masuk ke akun melalui Supabase.
+VEXOR is an electronics storefront demo built with Next.js, TypeScript, and Tailwind CSS. Visitors can browse a small catalog, search by product name, view product details, and add items to a shared cart.
 
-Proyek ini masih dalam pengembangan. Katalog memakai data lokal dan halaman checkout masih berupa demo, jadi alur belanja belum sampai ke pembayaran atau pembuatan pesanan.
+This is a personal frontend portfolio project focused on responsive layouts, reusable React components, and authentication. The catalog uses local sample data, and checkout is a UI demo.
 
-## Fitur
+[Repository](https://github.com/naslinakfili/VEXORNSL)
 
-- Beranda dengan daftar produk, kategori, banner promosi, dan testimoni.
-- Pencarian berdasarkan nama produk lewat kolom di header. Hasilnya ditampilkan di halaman shop.
-- Halaman detail untuk tiap produk, termasuk gambar, harga, pilihan ukuran, dan kontrol jumlah barang.
-- Penambahan produk ke keranjang menggunakan React Context dan `sessionStorage`.
-- Login email/password dan Google melalui Supabase, halaman profil, serta logout.
-- Tema terang dan gelap, dengan tombol ganti tema pada header desktop.
-- Layout yang menyesuaikan layar desktop dan ponsel.
+## Features
 
-Filter kategori beranda sudah berjalan untuk All, Audio, Laptops, dan Wearables. Data contoh Wearables belum tersedia. Daftar produk juga bisa diakses sebagai JSON melalui `GET /api/products`.
+- **Browse and search:** filter the homepage catalog by category or search from the header. Search is case-insensitive and includes an empty state when nothing matches.
+- **Product details:** view product images and prices, choose available sizes, and use quantity controls.
+- **Shared cart:** add products from their detail pages and view them at `/cartdrawer`. Cart state uses React Context and is written to `sessionStorage`.
+- **Account access:** sign in with email and password or Google through Supabase, view a profile, and sign out.
+- **Responsive UI:** product grids and page layouts adapt across screen sizes, with separate desktop and mobile checkout views.
+- **Theme and media controls:** switch between dark and light themes from the desktop header, or play the hero video from its poster.
 
-## Stack
+## Tech stack
 
-Next.js 16.3.0 dengan App Router, React 19.2.8, TypeScript, dan Tailwind CSS 4. Komponen UI menggunakan shadcn/ui dan Radix UI; autentikasi menggunakan Supabase JS serta `@supabase/ssr`.
+- **Application:** Next.js 16.3 with the App Router, React 19.2, and TypeScript with strict checking.
+- **UI:** Tailwind CSS 4, shadcn/ui components, Radix UI primitives, and Lucide icons.
+- **State and theming:** React Context, React hooks, `sessionStorage`, and `next-themes`.
+- **Authentication:** Supabase Auth with `@supabase/supabase-js` and `@supabase/ssr`.
+- **Tooling:** ESLint 9 and the React Compiler, enabled in `next.config.ts`.
 
-Pengaturan tema memakai `next-themes`. React Compiler sudah diaktifkan di `next.config.ts`. Daftar dependensi lengkap ada di [`package.json`](./package.json).
+Exact dependency versions are recorded in [package.json](./package.json) and [package-lock.json](./package-lock.json).
 
-## Instalasi
+## Implementation notes
 
-Siapkan Node.js 20.9 atau lebih baru, npm, dan proyek Supabase untuk autentikasi.
+- **URL-based search.** The header submits a GET form to `/shop?search=...`. The shop page reads the query on the server and filters the catalog, so a search can be shared as a link.
+- **One typed catalog.** [lib/products.ts](./lib/products.ts) supplies the homepage, shop, product detail pages, and `GET /api/products`. The endpoint returns the same sample data as JSON; the storefront reads the module directly.
+- **Shared and local state.** A cart provider wraps the page content and merges added items by product ID. Category selection, size selection, quantity inputs, and video playback use component state.
+- **Browser and server authentication.** The header subscribes to Supabase auth changes. Google sign-in returns to `/auth/callback`, where a server client exchanges the authorization code for a session.
+- **Reusable UI styling.** Shared controls live in `components/ui/`. CSS variables in `app/globals.css` define theme colors and component tokens.
 
-### 1. Pasang dependensi
+## Project structure
 
-Setelah clone atau mengunduh repositori, masuk ke folder proyek:
+```text
+app/
+  (auth)/                  Login and registration pages
+  api/products/            JSON catalog endpoint
+  auth/callback/           OAuth callback
+  component/               Shared header and footer
+  homepage/                Homepage sections and category state
+  shop/                    Catalog and search
+  productdescriptive/[id]/ Product detail route
+  cartdrawer/              Cart page
+  checkoutshipping/        Desktop and mobile checkout UI
+  profile/                 Account details and sign-out
+  layout.tsx               Global layout and providers
+components/ui/             Shared UI primitives
+lib/                       Product data, cart context, Supabase clients, utilities
+public/                    Product images, hero artwork, and videos
+```
+
+Both `/` and `/homepage` render the homepage. To change the sample catalog, edit `lib/products.ts` and place product images in `public/`. No product database or migrations are required.
+
+## Run locally
+
+You need Node.js **20.9 or later**, npm, and a Supabase project. Supabase configuration is required because the shared header initializes an auth client.
+
+### 1. Install dependencies
 
 ```bash
+git clone https://github.com/naslinakfili/VEXORNSL.git
 cd VEXORNSL
 npm ci
 ```
 
-`npm ci` mengikuti versi di `package-lock.json`. Jika sedang menambah atau mengganti dependensi, gunakan `npm install` untuk memperbarui lockfile.
+### 2. Configure the environment
 
-### 2. Isi konfigurasi Supabase
-
-Buat `.env.local` di folder utama, sejajar dengan `package.json`. Jika sudah ada, cukup lengkapi nilai yang diperlukan.
+Create `.env.local` beside `package.json`:
 
 ```dotenv
-NEXT_PUBLIC_SUPABASE_URL=https://PROJECT_REF.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=sb_publishable_GANTI_DENGAN_KEY_PROYEK
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_GANTI_DENGAN_KEY_PROYEK
+NEXT_PUBLIC_SUPABASE_URL=https://YOUR_PROJECT_REF.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=sb_publishable_YOUR_KEY
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_YOUR_KEY
 ```
 
-Ganti URL dan key di atas dengan milik proyek Supabase. Kedua variabel key bisa diisi dengan publishable key yang sama. Saat ini client di `lib/supabase/client.ts` membaca `ANON_KEY`, sementara client server membaca `PUBLISHABLE_KEY`, sehingga keduanya perlu diisi.
+Use your project's URL and the same publishable key for both key variables. The auth pages use the browser client in `lib/supabase/client.ts`, which reads `ANON_KEY`; the server client reads `PUBLISHABLE_KEY`.
 
-Gunakan key publik untuk variabel `NEXT_PUBLIC_*`; secret key dan `service_role` tidak digunakan di sini. Berkas `.env.local` sudah masuk `.gitignore`. Penjelasan jenis key ada di [dokumentasi Supabase](https://supabase.com/docs/guides/getting-started/api-keys).
+These must be public client keys, never a secret or `service_role` key. `.env.local` is ignored by Git. See [Supabase API keys](https://supabase.com/docs/guides/getting-started/api-keys) for the key types.
 
-### 3. Atur URL autentikasi
+### 3. Set up Supabase Auth
 
-Di konfigurasi Supabase Auth, isi Site URL dengan `http://localhost:3000`. Tambahkan dua alamat berikut ke Redirect URLs:
+Enable email/password sign-in. Set the Site URL to `http://localhost:3000` and add these Redirect URLs:
 
 ```text
 http://localhost:3000/login
 http://localhost:3000/auth/callback
 ```
 
-Alamat `/login` dipakai setelah verifikasi email. Login Google kembali ke aplikasi melalui `/auth/callback`.
+For Google sign-in, enable the Google provider and follow the [Supabase Google setup guide](https://supabase.com/docs/guides/auth/social-login/auth-google) to configure OAuth credentials and the Supabase callback URL in Google Cloud.
 
-Jika ingin mencoba login Google, aktifkan provider Google di Supabase dan isi kredensial OAuth dari Google Cloud. Redirect URI di Google Cloud memakai callback Supabase, biasanya `https://PROJECT_REF.supabase.co/auth/v1/callback`. Langkah lengkapnya tersedia di [panduan login Google](https://supabase.com/docs/guides/auth/social-login/auth-google).
+Use an existing Supabase Auth account to try email/password login; the registration form has a known issue described below.
 
-Katalog belum memakai database. Produk disimpan di `lib/products.ts`, jadi tidak ada migrasi atau tabel produk yang perlu disiapkan.
-
-## Menjalankan aplikasi
-
-Jalankan server pengembangan:
+### 4. Start the application
 
 ```bash
 npm run dev
 ```
 
-Buka [localhost:3000](http://localhost:3000). Perubahan pada halaman atau komponen akan tampil otomatis selama server berjalan. Untuk menghentikannya, tekan `Ctrl+C`.
+Open [localhost:3000](http://localhost:3000). Restart the server after changing `.env.local`.
 
-Kalau port 3000 sedang digunakan:
+For another port, use `npm run dev -- --port 3001` and update the Supabase URLs accordingly. The development script binds to `0.0.0.0`, allowing access from another device on the same network when the firewall permits it.
 
-```bash
-npm run dev -- --port 3001
-```
-
-Gunakan `http://localhost:3001` dan sesuaikan URL autentikasi di Supabase. Mulai ulang server setiap kali mengubah `.env.local`.
-
-Skrip `dev` memakai host `0.0.0.0`. Untuk mencoba tampilan di ponsel pada jaringan yang sama, buka alamat IP komputer dengan port server, selama firewall mengizinkan.
-
-## Lint dan build
-
-Periksa kode terlebih dahulu:
+### Lint and production build
 
 ```bash
 npm run lint
-```
-
-Untuk menjalankan versi produksi secara lokal, lakukan build lalu mulai server setelah build berhasil:
-
-```bash
 npm run build
 npm run start
 ```
 
-Next.js 16 tidak menjalankan lint saat build, jadi keduanya perlu dijalankan terpisah. Isi `.env.local` sebelum build karena nilai `NEXT_PUBLIC_*` disertakan ke bundle browser.
+Run `start` after a successful build. Lint is a separate check; Next.js 16 does not run it automatically during a build.
 
-Build juga membutuhkan akses internet untuk mengunduh font Geist melalui `next/font`. Jika unduhan font gagal, periksa koneksi lingkungan build.
+For deployment, set the same environment variables before building and update Supabase's Site URL and redirect allowlist to the deployed origin. Builds download the Geist fonts through `next/font/google`, so the build environment needs access to Google Fonts.
 
-## Halaman yang tersedia
+## Current limitations
 
-| Alamat | Isi |
-| --- | --- |
-| `/` dan `/homepage` | Beranda; tautan Home di header menuju `/homepage` |
-| `/shop` | Katalog; tambahkan `?search=earpondes` untuk mencoba pencarian |
-| `/productdescriptive/1` | Detail produk dengan ID 1 |
-| `/cartdrawer` | Keranjang belanja |
-| `/checkoutshipping` | Demo formulir pengiriman dan checkout |
-| `/login` dan `/register` | Login dan formulir pendaftaran |
-| `/profile` | Profil dan logout; pengguna tanpa sesi diarahkan ke login oleh client |
-| `/auth/callback` | Callback login Google |
-| `/api/products` | Data produk dalam format JSON melalui `GET` |
+- **Catalog controls:** homepage category filtering and name search are connected to the data. Shop filters, sorting, layout toggles, pagination, and the product-card plus buttons are still UI controls. Wearables has no sample products.
+- **Cart behavior:** adding an item increments its quantity by one per click, regardless of the product page's quantity input. Cart quantity edits and removal do not update shared state, color selection is not connected to the stored variant, and cart counts and totals are static.
+- **Checkout and sample content:** checkout does not process payments or save orders. Order summaries, discounts, stock messages, ratings, and testimonials use sample content.
+- **Authentication:** the registration confirmation field is bound to the password state instead of `confirmPassword`, so sign-up stops at the password check. The session-refresh helper in `lib/middleware.ts` is not wired to a root Proxy/Middleware entry point; the profile page redirects unauthenticated visitors on the client.
+- **Images:** some gallery thumbnails and recommendation cards reference image files that are not included in `public/`.
 
-## Struktur proyek
-
-```text
-app/
-  (auth)/              Halaman login dan registrasi
-  api/products/        Endpoint katalog
-  auth/callback/       Callback autentikasi
-  cartdrawer/          Keranjang
-  checkoutshipping/    Checkout
-  component/           Header dan footer
-  homepage/            Bagian-bagian beranda
-  productdescriptive/  Detail produk dan rute [id]
-  profile/             Profil pengguna
-  shop/                Katalog dan pencarian
-  layout.tsx           Layout utama dan provider
-  page.tsx             Beranda utama
-  globals.css          Styling global
-components/ui/         Komponen UI bersama
-lib/                   Data produk, context keranjang, client Supabase, dan utilitas
-public/                Gambar dan aset statis
-```
-
-Untuk menambah produk contoh, edit `lib/products.ts`. Simpan gambar di `public/` dan gunakan path seperti `/images/products/contoh.png` pada data produk.
-
-## Yang masih perlu diselesaikan
-
-Beberapa bagian sudah tampil di UI, tetapi logikanya belum lengkap:
-
-- Checkout belum memproses pembayaran atau menyimpan pesanan. Harga pada ringkasan, pajak, ongkir, dan promo masih berupa angka contoh.
-- Filter harga, rating, stok, pengurutan, dan pagination di shop belum memengaruhi daftar produk. Yang sudah bekerja adalah pencarian nama dan filter kategori di beranda.
-- Tombol hapus dan kontrol jumlah di keranjang belum memperbarui state bersama. Subtotal belum dihitung dari isi keranjang; penambahan barang masih dihitung per klik, dan pilihan warna belum tersambung ke state varian.
-- Input konfirmasi password pada formulir registrasi belum terhubung ke `confirmPassword`. Ini membuat pendaftaran berhenti dengan pesan “Password tidak sama”.
-- Helper pembaruan sesi di `lib/middleware.ts` belum dipasang sebagai entry point Proxy/Middleware.
-
-Rating, stok, testimoni, dan rekomendasi produk juga masih menggunakan data contoh.
-
-Jika Supabase gagal terhubung, periksa ketiga variabel di `.env.local` lalu restart server. Untuk masalah redirect login Google, periksa provider, kredensial OAuth, serta konfigurasi URL di Supabase dan Google Cloud.
-
-## Dokumentasi
-
-- [Next.js App Router](https://nextjs.org/docs/app)
-- [Supabase Auth untuk Next.js](https://supabase.com/docs/guides/auth/quickstarts/nextjs)
-- [Pengaturan Redirect URLs Supabase](https://supabase.com/docs/guides/auth/redirect-urls)
-
-Panduan Next.js untuk versi yang terpasang tersedia di `node_modules/next/dist/docs/` setelah instalasi dependensi.
- 
