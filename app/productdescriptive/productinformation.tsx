@@ -130,7 +130,7 @@ function ProductInformation({ product }: ProductInformationProps) {
                   className={`py-2.5 md:px-4.5 px-4 rounded-md transition-colors ${
                     isSelected
                       ? "bg-logo text-white hover:bg-logo/90"
-                      : "bg-transparent text-gray border border-input hover:bg-surface"
+                      : "bg-transparent text-gray border border-input hdark:over:bg-surface"
                   }`}
                   variant={isSelected ? "default" : "outline"}
                 >

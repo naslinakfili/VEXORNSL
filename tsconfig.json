@@ -31,5 +31,6 @@
     "**/*.mts",
     "app/productdescriptive"
   ],
-  "exclude": ["node_modules"]
+  // [DIUBAH] Abaikan folder dev (file sisa build lama) agar tidak menyebabkan error TypeScript
+  "exclude": ["node_modules", "dev"]
 }

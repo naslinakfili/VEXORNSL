@@ -1,16 +1,12 @@
-"use client";
-
 import Header from "./header";
 import Footer from "./footer";
-import { useCart } from "@/lib/cart";
 
 export default function CartDrawer() {
-  const { items } = useCart();
-
   return (
     <div className="flex w-full justify-end">
-      <aside className="max-w-110 w-full md:dark:bg-surface  py-8 px-6">
-        <Header products={items} />
+      <aside className="max-w-110 w-full md:dark:bg-surface py-8 px-6">
+        {/* Header dan Footer sekarang otomatis membaca data bersama via useCart */}
+        <Header />
         <Footer />
       </aside>
     </div>

@@ -1,4 +1,4 @@
-"use client"
+  "use client"
 import { useState, } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";

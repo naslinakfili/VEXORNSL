@@ -34,9 +34,9 @@ function ProductSection({ selectedCategory }: ProductSectionProps) {
           <figure key={product.id} className="w-full cursor-pointer">
             <Link href={`/productdescriptive/${product.id}`} className="block w-full">
             {/* Desktop card fills the grid column (421.33px) and is 347px tall. */}
-            <Card className="relative dark:bg-surface mx-auto pt-0 h-48.75 w-full md:h-86.75 md:w-full">
+            <Card className="flex flex-col justify-between dark:bg-surface mx-auto p-0 h-full w-full">
               {/* Desktop product image fills the card width and is 220px tall. */}
-              <div className="relative h-30 w-full overflow-hidden md:h-55 md:w-full">
+              <div className="relative aspect-square w-full overflow-hidden">
                 <Image
                   src={product.url}
                   alt={product.name}
@@ -51,16 +51,16 @@ function ProductSection({ selectedCategory }: ProductSectionProps) {
                 </Badge>
               </CardAction>
               <div className="">
-                <h2 className="ml-2.5 text-[16px] font-bold">{product.name}</h2>
+                <h2 className="ml-2.5 text-[16px] md:text-[20px] font-bold">{product.name}</h2>
                 <div className="flex ml-2.5">
-                  <Star className="w-2.5 h-2.5 text-logo fill-current" />
-                  <Star className="w-2.5 h-2.5 text-logo fill-current" />
-                  <Star className="w-2.5 h-2.5 text-logo fill-current" />
-                  <Star className="w-2.5 h-2.5 text-logo fill-current" />
-                  <Star className="w-2.5 h-2.5" />
+                  <Star className="w-4 h-4 text-logo fill-current" />
+                  <Star className="w-4 h-4 text-logo fill-current" />
+                  <Star className="w-4 h-4 text-logo fill-current" />
+                  <Star className="w-4 h-4 text-logo fill-current" />
+                  <Star className="w-4 h-4" />
                 </div>
-                <div className="flex px-2.5 justify-between items-center">
-                  <p className="text-[16px] font-bold">${product.price}</p>
+                <div className="flex p-3 justify-between items-center">
+                  <p className="text-[16px] md:text-[20px] font-bold">${product.price}</p>
                   <Button className="bg-logo hover:bg-logo/90 w-10 h-10 rounded-sm">
                     <Plus />
                   </Button>

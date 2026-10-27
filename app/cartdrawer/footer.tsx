@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Card, CardAction } from "@/components/ui/card";
@@ -6,68 +8,42 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { ArrowRight } from "lucide-react";
+//Gunakan useCart agar footer membaca data keranjang yang sama
+import { useCart } from "@/lib/cart";
 
-function Footer() {
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  url: string;
+  color?: string;
+  size?: string;
+  quantity?: number;
+}
+
+interface FooterProps {
+  products?: Product[];
+}
+
+function Footer({ products }: FooterProps) {
+  // Ambil data items dari context keranjang (atau dari props jika ada)
+  const { items } = useCart();
+  const cartItems = products || items;
+
+  // Hitung subtotal dinamis dari harga x jumlah quantity
+  const subtotal = cartItems.reduce(
+    (total, product) => total + product.price * (product.quantity ?? 1),
+    0
+  );
+
+  // Hitung estimasi pajak (8% dari subtotal jika ada barang)
+  const tax = subtotal > 0 ? subtotal * 0.08 : 0;
+
+  // Hitung total akhir belanjaan
+  const total = subtotal + tax;
+
   return (
     <footer>
-      <h2 className="md:block hidden text-[13px] font-bold text-gray mb-3">
-        You Make Also Like
-      </h2>
-      <div className="md:flex hidden gap-3 mb-6 w-full">
-        <figure className="">
-          <Card className="relative dark:bg-surface pt-0 min-w-40 max-w-40 h-40.5 w-full">
-            <div className="relative w-full h-22.5">
-              <Image
-                src="/images/img-azer.png"
-                alt="Event cover"
-                fill
-                className="relative aspect-video  w-full object-cover brightness-60 grayscale dark:brightness-40"
-              />
-            </div>
-            <CardAction className="absolute top-2 left-2">
-              <Badge className=" bg-logo text-white z-20 rounded-sm font-bold">
-                New
-              </Badge>
-            </CardAction>
-            <div className="">
-              <h2 className="ml-2.5 text-[13px] font-semibold">
-                SoundWave Alpha
-              </h2>
-
-              <div className="flex px-2.5 justify-between items-center">
-                <p className="text-[13px] font-bold">$259.99</p>
-              </div>
-            </div>
-          </Card>
-        </figure>
-
-        <figure className="">
-          <Card className="relative dark:bg-surface pt-0 min-w-40 max-w-40 h-40.5 w-full">
-            <div className="relative w-full h-2.5">
-              <Image
-                src="/images/img-azer.png"
-                alt="Event cover"
-                fill
-                className="relative aspect-video  w-full object-cover brightness-60 grayscale dark:brightness-40"
-              />
-            </div>
-            <CardAction className="absolute top-2 left-2">
-              <Badge className=" bg-logo text-white z-20 rounded-sm font-bold">
-                New
-              </Badge>
-            </CardAction>
-            <div className="">
-              <h2 className="ml-2.5 text-[13px] font-semibold">
-                SoundWave Alpha
-              </h2>
-
-              <div className="flex px-2.5 justify-between items-center">
-                <p className="text-[13px] font-bold">$259.99</p>
-              </div>
-            </div>
-          </Card>
-        </figure>
-      </div>
 
       <form action="input-promo-code" className="flex gap-2 mb-6">
         <Input
@@ -84,7 +60,8 @@ function Footer() {
       <footer className="flex flex-col mt-6 gap-3">
         <div className="flex justify-between">
           <p className="text-gray">Subtotal</p>
-          <span className="font-semibold">$539.98</span>
+          {/* Nilai subtotal otomatis terupdate */}
+          <span className="font-semibold">${subtotal.toFixed(2)}</span>
         </div>
 
         <div className="flex justify-between text-gray">
@@ -94,14 +71,16 @@ function Footer() {
 
         <div className="flex justify-between">
           <p className="text-gray">Tax</p>
-          <span className="font-semibold">$44.55</span>
+          {/* Nilai tax otomatis terupdate */}
+          <span className="font-semibold">${tax.toFixed(2)}</span>
         </div>
 
         <Separator />
 
         <div className="flex justify-between">
           <p className="text-[16px] font-bold">Total</p>
-          <span className="text-[20px] font-bold">$584.53</span>
+          {/* Nilai total otomatis terupdate */}
+          <span className="text-[20px] font-bold">${total.toFixed(2)}</span>
         </div>
 
         <Link href="/checkoutshipping" className="w-full">

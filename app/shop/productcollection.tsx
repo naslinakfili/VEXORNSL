@@ -87,14 +87,14 @@ function ProductColection({ search = ""}: ProductCollectionProps) {
         <ProductSection search={normalizedSearch} />
         <div className="flex justify-center w-full py-4 px-6">
           <Button className="bg-logo text-white px-6 py-3 gap-2 rounded-3xl">
-            <Settings className="w-3.5 h-3.5" />
+            <Settings className="w-3.4 h-3.5" />
             <p className="text-[14px] font-bold">Filter & Sort</p>
           </Button>
         </div>
       </div>
 
       <div className="md:flex hidden flex-1 lg:gap-10 gap-4 mt-6">
-        <CardPriceRange />
+        {/* <CardPriceRange /> */}
         <div className="flex-1">
           <ProductSection search={normalizedSearch} />
           <div className="mt-6">
@@ -171,12 +171,12 @@ function ProductSection({ search }: { search: string }) {
 
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:mb-12 w-full">
+    <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:mb-12 w-full">
       {filteredProducts.map((product) => (
         <figure className="w-full" key={product.id}>
           <Link href={`/productdescriptive/${product.id}`}>
-          <Card className="relative dark:bg-surface mx-auto pt-0 max-h-48.75 md:min-h-86.75 w-full">
-            <div className="relative w-full min-h-30 md:min-h-55">
+          <Card className="flex flex-col justify-between dark:bg-surface mx-auto p-0 h-full  w-full">
+            <div className="relative w-full aspect-square overflow-hidden">
               <Image
                 src={product.url}
                 alt={product.name}
@@ -184,19 +184,14 @@ function ProductSection({ search }: { search: string }) {
                 className="relative aspect-video w-full object-cover transition-transform duration-300 hover:scale-105"
               />
             </div>
-            <CardAction className="absolute top-2 left-2">
-              <Badge className="bg-logo text-white z-20 rounded-sm font-bold">
-                New
-              </Badge>
-            </CardAction>
             <div>
-              <h2 className="ml-2.5 text-[16px] font-bold">{product.name}</h2>
+              <h2 className="ml-2.5 text-[16px]  font-semibold">{product.name}</h2>
               <div className="flex ml-2.5" aria-label="4 out of 5 stars">
-                {[1, 2, 3, 4].map((star) => <Star key={star} className="w-2.5 h-2.5 text-logo fill-current" />)}
-                <Star className="w-2.5 h-2.5" />
+                {[1, 2, 3, 4].map((star) => <Star key={star} className="w-2.5 h-2.5 md:w-4 md:h-4 text-logo fill-current" />)}
+                <Star className="w-2.5 h-2.5 md:w-4 md:h-4" />
               </div>
-              <div className="flex px-2.5 justify-between items-center">
-                <p className="text-[16px] font-bold">${product.price.toFixed(2)}</p>
+              <div className="flex p-3 justify-between items-center">
+                <p className="text-[16px] font-semibold">${product.price.toFixed(2)}</p>
                 <Button aria-label={`Add ${product.name} to cart`} className="bg-logo hover:bg-logo/90 w-8 h-8 rounded-sm">
                   <Plus />
                 </Button>

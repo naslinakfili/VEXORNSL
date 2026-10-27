@@ -15,6 +15,11 @@ type CartItem = {
 type CartContextType = {
   items: CartItem[];
   addToCart: (product: CartItem) => void;
+  // [BARU] Fungsi hapus item: support nama removeToCart dan removeFromCart agar fleksibel
+  removeToCart: (id: number) => void;
+  removeFromCart: (id: number) => void;
+  // [BARU] Fungsi untuk ubah jumlah quantity barang (tambah / kurang)
+  updateQuantity: (id: number, quantity: number) => void;
 };
 
 const CartContext = createContext<CartContextType | null>(null);
@@ -47,8 +52,26 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     });
   };
 
+  //Logika untuk menghapus barang berdasarkan id produk
+  const removeToCart = (id: number) => {
+    setItems((prev) => prev.filter((item) => item.id !== id));
+  };
+  const removeFromCart = removeToCart; // alias agar bisa dipanggil dengan kedua nama
+
+  //Logika untuk mengubah quantity barang (minimal 1)
+  const updateQuantity = (id: number, quantity: number) => {
+    setItems((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item
+      )
+    );
+  };
+
   return (
-    <CartContext.Provider value={{ items, addToCart }}>
+    //Masukkan removeFromCart dan updateQuantity ke Provider agar bisa dipakai di seluruh file
+    <CartContext.Provider
+      value={{ items, addToCart, removeToCart, removeFromCart, updateQuantity }}
+    >
       {children}
     </CartContext.Provider>
   );
@@ -61,3 +84,4 @@ export function useCart() {
   }
   return context;
 }
+
