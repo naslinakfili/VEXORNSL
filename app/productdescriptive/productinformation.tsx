@@ -62,6 +62,18 @@ function ProductInformation({ product }: ProductInformationProps) {
     });
   };
 
+    const handleAddToCheck = () => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      url: product.url,
+      color: selectedColor,
+      size: selectedSize,
+      quantity: quantity,
+    });
+  };
+
   return (
     <div>
       <h1 className="md:text-[32px] text-[22px] font-extrabold">
@@ -158,7 +170,7 @@ function ProductInformation({ product }: ProductInformationProps) {
               onChange={handleInputChange}
               min="1"
               max="999"
-              className="w-14 font-bold text-center rounded-none border-x-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none !ring-0 !ring-offset-0 !outline-none !shadow-none focus-visible:!ring-0 focus-visible:!ring-offset-0 focus-visible:!border-input"
+              className="w-14 font-bold text-center rounded-none border-x-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ring-0! ring-offset-0! outline-none shadow-none focus-visible:ring-0! focus-visible:ring-offset-0! focus-visible:border-input!"
             />
             <Button
               type="button"

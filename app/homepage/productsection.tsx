@@ -44,12 +44,13 @@ function ProductSection({ selectedCategory }: ProductSectionProps) {
                   sizes="(max-width: 768px) 50vw, 33vw"
                   className="object-cover transition-transform duration-300 hover:scale-105"
                 />
-              </div>
-              <CardAction className="absolute top-2 left-2">
+                <CardAction className="absolute top-2 left-2">
                 <Badge className=" bg-logo text-white z-20 rounded-sm font-bold">
                   New
                 </Badge>
               </CardAction>
+              </div>
+              
               <div className="">
                 <h2 className="ml-2.5 text-[16px] md:text-[20px] font-bold">{product.name}</h2>
                 <div className="flex ml-2.5">

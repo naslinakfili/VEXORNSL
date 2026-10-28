@@ -67,7 +67,7 @@ export default function Header() {
           <h3 className="text-[18px] font-extrabold">VEXOR</h3>
         </div>
 
-        <div className="flex items-center md:gap-5 gap-2">
+        <div className="flex md:flex-1 items-center md:gap-5 gap-2">
           <button
             type="button"
             className={`md:hidden ${form === false ? "block" : "hidden"}`}
@@ -77,11 +77,11 @@ export default function Header() {
           </button>
           <form
             action="/shop"
-            className={`${
-              form
-                ? "flex"
-                : "hidden"
-            } `}
+            className={`${ 
+              form === false
+                ? "hidden"
+                : "flex"
+            } md:flex md:flex-1 md:mx-4 w-full `}
           >
             <InputGroup className="md:flex w-full h-11 ">
               <InputGroupAddon>

@@ -15,23 +15,29 @@ type CartItem = {
 type CartContextType = {
   items: CartItem[];
   addToCart: (product: CartItem) => void;
-  // [BARU] Fungsi hapus item: support nama removeToCart dan removeFromCart agar fleksibel
+  // Fungsi hapus item: support nama removeToCart dan removeFromCart agar fleksibel
   removeToCart: (id: number) => void;
   removeFromCart: (id: number) => void;
-  // [BARU] Fungsi untuk ubah jumlah quantity barang (tambah / kurang)
+  // Fungsi untuk ubah jumlah quantity barang (tambah / kurang)
   updateQuantity: (id: number, quantity: number) => void;
 };
 
 const CartContext = createContext<CartContextType | null>(null);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>([]);
+  const [items, setItems] = useState<CartItem[]>(() => {
+    // 1. Pengecekan Lingkungan (Server vs Browser)
+    if (typeof window === "undefined") return [];
+    // 2. Mengambil data dari browser storage
+    try {
+      const saved = sessionStorage.getItem("cart");
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      // 3. Fallback jika data korup/rusak
+      return[];
+    }
+  });
 
-  // Load dari sessionStorage saat mount
-  useEffect(() => {
-    const saved = sessionStorage.getItem("cart");
-    if (saved) setItems(JSON.parse(saved));
-  }, []);
 
   // Simpan ke sessionStorage setiap kali items berubah
   useEffect(() => {

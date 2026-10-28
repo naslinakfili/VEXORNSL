@@ -27,13 +27,13 @@ function Testimonial() {
             <Star className="w-2.5 h-2.5 fill-current" />
           </div>
           <blockquote className="my-3 md:hidden">
-            "The engineering precision and minimalist design details are
-            completely..."
+            &quot;The engineering precision and minimalist design details are
+            completely...&quot;
           </blockquote>
           <blockquote className="hidden md:flex text-center my-5">
-            "The engineering precision and minimalist design details are
+            &quot;The engineering precision and minimalist design details are
             completely unmatched. SoundWafe Alpha headphones deliver audio
-            fidelity that easily competes with sistems twice the price"
+            fidelity that easily competes with sistems twice the price&quot;
           </blockquote>
           <figure className="flex gap-2">
             <Avatar className="flex gap-2">
