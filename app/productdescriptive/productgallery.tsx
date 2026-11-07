@@ -10,7 +10,7 @@ interface ProductGaleryProps {
 function ProductGallery({ product }: ProductGaleryProps) {
   return (
     <main className="">
-      <figure className="flex flex-col gap-6 lg:min-w-[600px] md:min-w-[480px] lg:mb-20">
+      <figure className="flex flex-col gap-6 lg:min-w-150 md:min-w-120 lg:mb-20">
         <Image
           src={product.url}
           alt={product.name}

@@ -83,7 +83,7 @@ function Footer({ products }: FooterProps) {
           <span className="text-[20px] font-bold">${total.toFixed(2)}</span>
         </div>
 
-        <Link href="/checkoutshipping" className="w-full">
+        <Link href="/checkoutshipping?from=cart" className="w-full">
           <Button className="bg-logo/90 hover:bg-logo mt-1 py-4 rounded-md w-full">
             <p className="text-[16px] font-bold text-white">
               Proceed to Checkout

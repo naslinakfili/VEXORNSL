@@ -1,13 +1,14 @@
 export type ProductCategory = "audio" | "laptops" | "wearables";
 
 export interface Product {
-  tipe: ProductCategory;
+  tipe?: ProductCategory;
   id: number;
   name: string;
   price: number;
   url: string;
   color?: string;
   size?: string;
+  quantity?: number;
 }
 
 export const products: Product[] = [
@@ -18,7 +19,8 @@ export const products: Product[] = [
     price: 450,
     url: "/images/products/electronics/labtop/labtop-azer-main/labtop-azer-main01.png",
     color: "white,red ,blue",
-    size: "Standart, pro, mini"
+    size: "Standart, pro, mini",
+    quantity: 5,
   },
   {
     tipe: "audio",
@@ -27,6 +29,7 @@ export const products: Product[] = [
     price: 75,
     url: "/images/products/electronics/earphones/airphone-white-main/airphone-white-main01.png",
     color: "white,black",
+    quantity: 5,
   },
   {
     tipe: "audio",
@@ -34,6 +37,7 @@ export const products: Product[] = [
     name: "Hanset Bluetoutch",
     price: 45,
     url: "/images/products/aksessories/chargers/charger-main01.png",
+    quantity: 5,
   },
   {
     tipe: "laptops",
@@ -41,5 +45,6 @@ export const products: Product[] = [
     name: "Mouse Gaming",
     price: 55,
     url: "/images/products/aksessories/keyboards/keyboard-main01.png",
+    quantity: 5,
   },
 ];

@@ -12,7 +12,7 @@ import { ChevronLeft, ArrowRight } from "lucide-react";
 
 function FormCheckout() {
   return (
-    <main className="lg:w-[788px]">
+    <main className="lg:w-197">
       <h2 className="text-[20px] font-bold">Contact Information</h2>
 
       <form className="flex flex-col gap-6 mt-6">

@@ -62,7 +62,7 @@ function ProductInformation({ product }: ProductInformationProps) {
     });
   };
 
-    const handleAddToCheck = () => {
+  const handleAddToCheck = () => {
     addToCart({
       id: product.id,
       name: product.name,
@@ -111,6 +111,7 @@ function ProductInformation({ product }: ProductInformationProps) {
           </p>
           <RadioGroup
             defaultValue={colors.length > 0 ? `color-${colors[0]}` : ""}
+            onValueChange={(val) => setSelectedColor(val.replace("color-", ""))}
             className="flex gap-4"
           >
             {colors.map((colorName, index) => (
@@ -208,7 +209,9 @@ function ProductInformation({ product }: ProductInformationProps) {
             <ShoppingBag />
             <p>Add to cart</p>
           </Button>
-          <Link href="/checkoutshipping">
+          <Link
+            href={`/checkoutshipping?from=direct&productId=${product.id}&qty=${quantity}&color=${encodeURIComponent(selectedColor)}&size=${encodeURIComponent(selectedSize)}`}
+          >
             <Button className="md:px-12 px-10 py-4">Buy Now</Button>
           </Link>
           <Button variant="outline" className="md:flex hidden">
